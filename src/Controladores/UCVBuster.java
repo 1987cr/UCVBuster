@@ -11,8 +11,8 @@ public class UCVBuster {
     
     private static UCVBuster uniqueInstance;
     private IAcceso acceso;
-    private IAdmin admin;
-    private IEmpleado emp;
+    private IAdmin rolAdmin;
+    private IEmpleado rolEmpleado;
     private RegAlquiler regAlquiler;
 
     private UCVBuster (){
@@ -39,33 +39,35 @@ public class UCVBuster {
                 acceso.setVisible(true);
                 break;
                 
-            case 2:
-                admin = new IAdmin();
-                admin.setLocationRelativeTo(null);
-                admin.setVisible(true);
+            case 2: // Mostrar Panel Administrador
+                if(rolAdmin == null)
+                    rolAdmin = new IAdmin();
+                rolAdmin.setLocationRelativeTo(null);
+                rolAdmin.setVisible(true);
                 break;
                 
-            case 3:
-                emp = new IEmpleado();
-                emp.setLocationRelativeTo(null);
-                emp.setVisible(true);
+            case 3: // Mostrar Panel Empleado
+                if(rolEmpleado == null)
+                    rolEmpleado = new IEmpleado();
+                rolEmpleado.setLocationRelativeTo(null);
+                rolEmpleado.setVisible(true);
                 break;
                 
-            case 4:
+            case 4: // Mostrar Registrar Alquileres
                 regAlquiler = new RegAlquiler();
                 regAlquiler.setLocationRelativeTo(null);
                 regAlquiler.setVisible(true);
-                emp.setEnabled(false);
+                rolEmpleado.setEnabled(false);
         }        
          
      }
     
-    public void corroborar_clave(String text) throws IOException {
-       if (text.contentEquals("admin")){
+    public void corroborar_clave(String text, int usuario) throws IOException {
+       if (usuario == 0 && text.contentEquals("admin")){
            acceso.setVisible(false);
            desplegar_Interfaces(2);
        }else{
-           if (text.contentEquals("empleado")){
+           if (usuario == 1 && text.contentEquals("empleado")){
                 acceso.setVisible(false);
                 desplegar_Interfaces(3);
            }else{
