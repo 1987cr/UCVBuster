@@ -3,6 +3,7 @@ package Controladores;
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
 import Interfaces.IEmpleado;
+import Interfaces.RegAlquiler;
 import java.io.IOException;
 
 
@@ -12,6 +13,7 @@ public class UCVBuster {
     private IAcceso acceso;
     private IAdmin admin;
     private IEmpleado emp;
+    private RegAlquiler regAlquiler;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -48,6 +50,12 @@ public class UCVBuster {
                 emp.setLocationRelativeTo(null);
                 emp.setVisible(true);
                 break;
+                
+            case 4:
+                regAlquiler = new RegAlquiler();
+                regAlquiler.setLocationRelativeTo(null);
+                regAlquiler.setVisible(true);
+                emp.setEnabled(false);
         }        
          
      }

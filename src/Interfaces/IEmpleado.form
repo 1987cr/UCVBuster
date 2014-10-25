@@ -98,11 +98,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Registar Alquiler de Video"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_alquiler_videoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1_devolver_video">
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrar devolucion de Video"/>
-            <Property name="actionCommand" type="java.lang.String" value="Registrar devolucion de Video"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1_lista_alq_cliente">

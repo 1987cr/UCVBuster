@@ -42,9 +42,13 @@ public class IEmpleado extends javax.swing.JFrame {
         jPanel1.setToolTipText("");
 
         jButton1_alquiler_video.setText("Registar Alquiler de Video");
+        jButton1_alquiler_video.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_alquiler_videoActionPerformed(evt);
+            }
+        });
 
         jButton1_devolver_video.setText("Registrar devolucion de Video");
-        jButton1_devolver_video.setActionCommand("Registrar devolucion de Video");
 
         jButton1_lista_alq_cliente.setText("Consultar Alquileres");
 
@@ -117,6 +121,14 @@ public class IEmpleado extends javax.swing.JFrame {
         }
    
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void jButton1_alquiler_videoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_alquiler_videoActionPerformed
+        try {
+            central.desplegar_Interfaces(4);
+        } catch (IOException ex) {
+            Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1_alquiler_videoActionPerformed
 
 
     public static void main(String args[]) {
