@@ -138,7 +138,7 @@ public class IAdmin extends javax.swing.JFrame {
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         try { 
-            central.desplegar_Interfaces(0);
+            central.seleccionarOpcion(0);
         } catch (IOException ex) {
             Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -149,7 +149,7 @@ public class IAcceso extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            central.desplegar_Interfaces(0);
+            central.seleccionarOpcion(0);
         } catch (IOException ex) {
             Logger.getLogger(IAcceso.class.getName()).log(Level.SEVERE, null, ex);
         }

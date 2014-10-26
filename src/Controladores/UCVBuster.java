@@ -26,7 +26,7 @@ public class UCVBuster {
         return uniqueInstance;
     }     
      
-    public void desplegar_Interfaces(int opc) throws IOException{
+    public void seleccionarOpcion(int opc) throws IOException{
         
         switch(opc){
             case 0:
@@ -56,7 +56,7 @@ public class UCVBuster {
                 rolEmpleado.setResizable(false);
                 break;
                 
-            case 4: // Mostrar Registrar Alquileres
+            case 4: // Registrar Alquileres
                 rolRegAlquiler = new IregAlquiler();
                 rolRegAlquiler.setLocationRelativeTo(null);
                 rolRegAlquiler.setVisible(true);
@@ -64,12 +64,30 @@ public class UCVBuster {
                 rolEmpleado.setEnabled(false);
                 break;
                 
-            case 5: // Cancelar Registrar Alquileres
+            case 5: // Cancelar: Registrar Alquileres
                 rolRegAlquiler.setVisible(false);
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
-                //rolEmpleado.setLocationRelativeTo(null);
-
+                break;
+                
+            case 6: // Aceptar: Registrar Alquileres
+                
+                break;
+                
+            case 7: // Buscar Cédula: Registrar Alquileres
+                
+                break;
+                
+            case 8: // Buscar ID: Registrar Alquileres
+                
+                break;
+                
+            case 9:
+                
+                break;
+                
+            case 10:
+                
                 break;
         }        
          
@@ -78,11 +96,11 @@ public class UCVBuster {
     public void corroborar_clave(String text, int usuario) throws IOException {
        if (usuario == 0){
            acceso.setVisible(false);
-           desplegar_Interfaces(2);
+           seleccionarOpcion(2);
        }else{
            if (usuario == 1){
                 acceso.setVisible(false);
-                desplegar_Interfaces(3);
+                seleccionarOpcion(3);
            }else{
                 System.out.println("caiste!!! ");
            }//fin else

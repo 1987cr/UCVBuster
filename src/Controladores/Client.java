@@ -7,7 +7,7 @@ public class Client {
 
     public static void main(String[] args) throws IOException{
         UCVBuster b = UCVBuster.Instance();
-        b.desplegar_Interfaces(1);        
+        b.seleccionarOpcion(1);        
     }
 
 }
