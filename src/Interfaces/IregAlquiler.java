@@ -7,6 +7,9 @@
 package Interfaces;
 
 import Controladores.UCVBuster;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -164,6 +167,11 @@ public class IregAlquiler extends javax.swing.JFrame {
         );
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Aceptar");
         jButton4.setEnabled(false);
@@ -209,6 +217,14 @@ public class IregAlquiler extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
        
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            central.desplegar_Interfaces(5);
+        } catch (IOException ex) {
+            Logger.getLogger(IregAlquiler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

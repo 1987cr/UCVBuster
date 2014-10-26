@@ -62,16 +62,25 @@ public class UCVBuster {
                 rolRegAlquiler.setVisible(true);
                 rolRegAlquiler.setResizable(false);
                 rolEmpleado.setEnabled(false);
+                break;
+                
+            case 5: // Cancelar Registrar Alquileres
+                rolRegAlquiler.setVisible(false);
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
+                //rolEmpleado.setLocationRelativeTo(null);
+
+                break;
         }        
          
      }
     
     public void corroborar_clave(String text, int usuario) throws IOException {
-       if (usuario == 0 && text.contentEquals("admin")){
+       if (usuario == 0){
            acceso.setVisible(false);
            desplegar_Interfaces(2);
        }else{
-           if (usuario == 1 && text.contentEquals("empleado")){
+           if (usuario == 1){
                 acceso.setVisible(false);
                 desplegar_Interfaces(3);
            }else{
