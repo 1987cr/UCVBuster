@@ -3,7 +3,7 @@ package Controladores;
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
 import Interfaces.IEmpleado;
-import Interfaces.RegAlquiler;
+import Interfaces.IregAlquiler;
 import java.io.IOException;
 
 
@@ -13,7 +13,7 @@ public class UCVBuster {
     private IAcceso acceso;
     private IAdmin rolAdmin;
     private IEmpleado rolEmpleado;
-    private RegAlquiler regAlquiler;
+    private IregAlquiler rolRegAlquiler;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -37,6 +37,7 @@ public class UCVBuster {
                 acceso = new IAcceso();
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);
+                acceso.setResizable(false);
                 break;
                 
             case 2: // Mostrar Panel Administrador
@@ -44,6 +45,7 @@ public class UCVBuster {
                     rolAdmin = new IAdmin();
                 rolAdmin.setLocationRelativeTo(null);
                 rolAdmin.setVisible(true);
+                rolAdmin.setResizable(false);
                 break;
                 
             case 3: // Mostrar Panel Empleado
@@ -51,12 +53,14 @@ public class UCVBuster {
                     rolEmpleado = new IEmpleado();
                 rolEmpleado.setLocationRelativeTo(null);
                 rolEmpleado.setVisible(true);
+                rolEmpleado.setResizable(false);
                 break;
                 
             case 4: // Mostrar Registrar Alquileres
-                regAlquiler = new RegAlquiler();
-                regAlquiler.setLocationRelativeTo(null);
-                regAlquiler.setVisible(true);
+                rolRegAlquiler = new IregAlquiler();
+                rolRegAlquiler.setLocationRelativeTo(null);
+                rolRegAlquiler.setVisible(true);
+                rolRegAlquiler.setResizable(false);
                 rolEmpleado.setEnabled(false);
         }        
          

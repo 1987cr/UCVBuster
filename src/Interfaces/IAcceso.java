@@ -3,6 +3,9 @@ package Interfaces;
 
 import Controladores.Client;
 import Controladores.UCVBuster;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class IAcceso extends javax.swing.JFrame {
@@ -56,10 +59,20 @@ public class IAcceso extends javax.swing.JFrame {
         jLabel_clave.setText("Clave:");
 
         usuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Empleado", "Invitado" }));
+        usuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                usuarioItemStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Usuario:");
 
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,6 +141,19 @@ public class IAcceso extends javax.swing.JFrame {
             System.out.println("telible");
         }
     }//GEN-LAST:event_jButton1_accionActionPerformed
+
+    private void usuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usuarioItemStateChanged
+        if(getUsuario() == 2)
+            System.out.println("YUP");
+    }//GEN-LAST:event_usuarioItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            central.desplegar_Interfaces(0);
+        } catch (IOException ex) {
+            Logger.getLogger(IAcceso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
