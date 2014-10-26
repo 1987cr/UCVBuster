@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class IregAlquiler extends javax.swing.JFrame {
+public class IRegAlquiler extends javax.swing.JFrame {
 
     private final UCVBuster central;
     
-    public IregAlquiler() {
+    public IRegAlquiler() {
         this.central = UCVBuster.Instance();
         initComponents();
     }
@@ -224,7 +224,7 @@ public class IregAlquiler extends javax.swing.JFrame {
         try {
             central.seleccionarOpcion(7);
         } catch (IOException ex) {
-            Logger.getLogger(IregAlquiler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRegAlquiler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buscarCedulaBtnActionPerformed
 
@@ -232,7 +232,7 @@ public class IregAlquiler extends javax.swing.JFrame {
         try {
             central.seleccionarOpcion(5);
         } catch (IOException ex) {
-            Logger.getLogger(IregAlquiler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRegAlquiler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cancelarBtnActionPerformed
 
@@ -240,7 +240,7 @@ public class IregAlquiler extends javax.swing.JFrame {
         try {
             central.seleccionarOpcion(8);
         } catch (IOException ex) {
-            Logger.getLogger(IregAlquiler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRegAlquiler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buscarIdBtnActionPerformed
 
@@ -248,7 +248,7 @@ public class IregAlquiler extends javax.swing.JFrame {
         try {
             central.seleccionarOpcion(6);
         } catch (IOException ex) {
-            Logger.getLogger(IregAlquiler.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IRegAlquiler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarBtnActionPerformed
 
@@ -266,20 +266,20 @@ public class IregAlquiler extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IregAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IRegAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IregAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IRegAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IregAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IRegAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IregAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IRegAlquiler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IregAlquiler().setVisible(true);
+                new IRegAlquiler().setVisible(true);
             }
         });
     }

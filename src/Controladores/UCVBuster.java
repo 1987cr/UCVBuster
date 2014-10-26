@@ -3,7 +3,7 @@ package Controladores;
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
 import Interfaces.IEmpleado;
-import Interfaces.IregAlquiler;
+import Interfaces.IRegAlquiler;
 import java.io.IOException;
 
 
@@ -13,7 +13,7 @@ public class UCVBuster {
     private IAcceso acceso;
     private IAdmin rolAdmin;
     private IEmpleado rolEmpleado;
-    private IregAlquiler rolRegAlquiler;
+    private IRegAlquiler rolRegAlquiler;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -57,7 +57,7 @@ public class UCVBuster {
                 break;
                 
             case 4: // Registrar Alquileres
-                rolRegAlquiler = new IregAlquiler();
+                rolRegAlquiler = new IRegAlquiler();
                 rolRegAlquiler.setLocationRelativeTo(null);
                 rolRegAlquiler.setVisible(true);
                 rolRegAlquiler.setResizable(false);
