@@ -65,7 +65,8 @@ public class IRegAlquiler extends javax.swing.JFrame {
 
         jTextField6.setText("jTextField6");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Alquiler");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Cliente"));
 
