@@ -97,8 +97,8 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="nombreField" pref="152" max="32767" attributes="0"/>
-                      <Component id="cedulaField" max="32767" attributes="0"/>
                       <Component id="apellidoField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cedulaField" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="buscarCedulaBtn" min="-2" max="-2" attributes="0"/>

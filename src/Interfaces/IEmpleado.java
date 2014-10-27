@@ -40,6 +40,11 @@ public class IEmpleado extends javax.swing.JFrame {
         });
 
         regDevolucionBtn.setText("Registrar devolucion de Video");
+        regDevolucionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regDevolucionBtnActionPerformed(evt);
+            }
+        });
 
         consultarAlqBtn.setText("Consultar Alquileres");
 
@@ -120,6 +125,14 @@ public class IEmpleado extends javax.swing.JFrame {
             Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_regAlquilerBtnActionPerformed
+
+    private void regDevolucionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regDevolucionBtnActionPerformed
+        try {
+            central.seleccionarOpcion(9);
+        } catch (IOException ex) {
+            Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_regDevolucionBtnActionPerformed
 
 
     public static void main(String args[]) {

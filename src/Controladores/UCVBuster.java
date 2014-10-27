@@ -2,6 +2,7 @@ package Controladores;
 
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
+import Interfaces.IRegDevolucion;
 import Interfaces.IEmpleado;
 import Interfaces.IRegAlquiler;
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class UCVBuster {
     private IAdmin rolAdmin;
     private IEmpleado rolEmpleado;
     private IRegAlquiler rolRegAlquiler;
+    private IRegDevolucion rolRegDevolucion;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -82,12 +84,18 @@ public class UCVBuster {
                 
                 break;
                 
-            case 9:
-                
+            case 9: // Registrar Devolución
+                rolRegDevolucion = new IRegDevolucion();
+                rolRegDevolucion.setLocationRelativeTo(null);
+                rolRegDevolucion.setVisible(true);
+                rolRegDevolucion.setResizable(false);
+                rolEmpleado.setEnabled(false);
                 break;
                 
-            case 10:
-                
+            case 10: // Cancelar: Registrar Devolución
+                rolRegDevolucion.setVisible(false);
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
                 break;
         }        
          
