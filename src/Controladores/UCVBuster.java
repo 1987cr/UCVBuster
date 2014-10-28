@@ -5,7 +5,8 @@ import Interfaces.IAdmin;
 import Interfaces.IEmpleado;
 import Interfaces.IRegDevolucion;
 import Interfaces.IRegAlquiler;
-import Modelo.Correo;
+import Modelo.ListaAtrasadosTimer;
+import Modelo.CarteleraTimer;
 import java.io.IOException;
 
 
@@ -17,7 +18,8 @@ public class UCVBuster {
     private IEmpleado rolEmpleado;
     private IRegAlquiler rolRegAlquiler;
     private IRegDevolucion rolRegDevolucion;
-    private Correo correo;
+    private ListaAtrasadosTimer laTimer;
+    private CarteleraTimer cTimer;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -28,7 +30,7 @@ public class UCVBuster {
             uniqueInstance = new UCVBuster();
         }
         return uniqueInstance;
-    }     
+    }                                                                 
      
     public void seleccionarOpcion(int opc) throws IOException{
         
@@ -38,8 +40,8 @@ public class UCVBuster {
                 break;
                 
             case 1:
-                correo = new Correo();
-                System.out.println(correo.sendMail("lwjirl@gmail.com, cr.exe@hotmail.com, 1987cr@gmail.com, ermaracucho3@hotmail.com"));
+                laTimer = new ListaAtrasadosTimer();
+                cTimer = new CarteleraTimer();
                 acceso = new IAcceso();
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);

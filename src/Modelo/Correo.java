@@ -29,13 +29,13 @@ public class Correo {
             });  
         }
         
-        public String sendMail(String to){
+        public String sendMail(String to, String body){
             try {  
                 message = new MimeMessage(session);  
                 message.setFrom(new InternetAddress("patronesdyf@gmail.com"));
                 message.addRecipients(Message.RecipientType.TO,InternetAddress.parse(to));  
                 message.setSubject("UCVBuster - Cartelera");  
-                message.setText("Alquilen videos perrrrrras");  
+                message.setText(body);  
 
                 //send message  
                 Transport.send(message);  
