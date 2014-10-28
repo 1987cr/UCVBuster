@@ -155,6 +155,7 @@ public class UCVBuster {
             case 19: // Aceptar: Registrar Cliente
                 // cuando se verifica si el cliente ya está registrado?
                 break;
+                
         }        
          
      }
