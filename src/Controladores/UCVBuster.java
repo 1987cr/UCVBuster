@@ -5,6 +5,7 @@ import Interfaces.IAdmin;
 import Interfaces.IEmpleado;
 import Interfaces.IRegDevolucion;
 import Interfaces.IRegAlquiler;
+import Interfaces.IConsultar_alquileres;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.CarteleraTimer;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class UCVBuster {
     private IEmpleado rolEmpleado;
     private IRegAlquiler rolRegAlquiler;
     private IRegDevolucion rolRegDevolucion;
+    private IConsultar_alquileres rolConsAlq;
     private ListaAtrasadosTimer laTimer;
     private CarteleraTimer cTimer;
 
@@ -102,6 +104,36 @@ public class UCVBuster {
                 rolRegDevolucion.setVisible(false);
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
+                break;
+                
+            case 11: // Aceptar: Registrar Devolución
+                
+                break;
+                
+            case 12: // Buscar Cédula: Registrar Devolución
+                
+                break;
+                
+            case 13: // Buscar ID: Registrar Devolución
+                
+                break;
+                
+            case 14: // Consultar Alquileres
+                rolConsAlq = new IConsultar_alquileres();
+                rolConsAlq.setLocationRelativeTo(null);
+                rolConsAlq.setVisible(true);
+                rolConsAlq.setResizable(false);
+                rolEmpleado.setEnabled(false);
+                break;
+                
+            case 15: // Regresar: Consultar Alquileres
+                rolConsAlq.setVisible(false);
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
+                break;
+                
+            case 16: // Buscar Cédula: Consultar Alquileres
+                
                 break;
         }        
          
