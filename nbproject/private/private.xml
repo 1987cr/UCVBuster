@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documents%20and%20Settings/Administrador/Mis%20documentos/NetBeansProjects/UCVBuster-master/src/Interfaces/IRegDevolucion.java</file>
-            <file>file:/D:/Documents%20and%20Settings/Administrador/Mis%20documentos/NetBeansProjects/UCVBuster-master/src/Controladores/UCVBuster.java</file>
-            <file>file:/D:/Documents%20and%20Settings/Administrador/Mis%20documentos/NetBeansProjects/UCVBuster-master/src/Interfaces/IEmpleado.java</file>
-            <file>file:/D:/Documents%20and%20Settings/Administrador/Mis%20documentos/NetBeansProjects/UCVBuster-master/src/Interfaces/IRegAlquiler.java</file>
-            <file>file:/D:/Documents%20and%20Settings/Administrador/Mis%20documentos/NetBeansProjects/UCVBuster-master/src/Interfaces/IConsultar_alquileres.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Controladores/UCVBuster.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Modelo/Correo.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IEmpleado.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IRegDevolucion.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/ISelFoto.java</file>
         </group>
     </open-files>
 </project-private>

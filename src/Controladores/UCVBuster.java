@@ -2,13 +2,14 @@ package Controladores;
 
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
-import Interfaces.IEmpleado;
-import Interfaces.IRegDevolucion;
-import Interfaces.IRegAlquiler;
 import Interfaces.IConsultar_alquileres;
+import Interfaces.IEmpleado;
+import Interfaces.IRegAlquiler;
 import Interfaces.IRegCliente;
-import Modelo.ListaAtrasadosTimer;
+import Interfaces.IRegDevolucion;
+import Interfaces.ISelFoto;
 import Modelo.CarteleraTimer;
+import Modelo.ListaAtrasadosTimer;
 import java.io.IOException;
 
 
@@ -22,6 +23,8 @@ public class UCVBuster {
     private IRegDevolucion rolRegDevolucion;
     private IConsultar_alquileres rolConsAlq;
     private IRegCliente rolRegCliente;
+    private ISelFoto rolSelFoto;
+    
     private ListaAtrasadosTimer laTimer;
     private CarteleraTimer cTimer;
 
@@ -166,6 +169,14 @@ public class UCVBuster {
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);
                 acceso.setResizable(false);
+                break;
+                
+            case 21:
+                rolSelFoto = new ISelFoto();
+                rolSelFoto.setLocationRelativeTo(null);
+                rolSelFoto.setVisible(true);
+                rolSelFoto.setResizable(false);
+                rolEmpleado.setEnabled(false);
                 break;
         }        
          

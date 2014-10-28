@@ -55,6 +55,11 @@ public class IEmpleado extends javax.swing.JFrame {
         });
 
         personalizarVidBtn.setText("Personalizar Video ");
+        personalizarVidBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personalizarVidBtnActionPerformed(evt);
+            }
+        });
 
         SalirBtn.setText("Salir");
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -165,6 +170,14 @@ public class IEmpleado extends javax.swing.JFrame {
             Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_regClienteBtnActionPerformed
+
+    private void personalizarVidBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizarVidBtnActionPerformed
+        try {
+            central.seleccionarOpcion(21);
+        } catch (IOException ex) {
+            Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_personalizarVidBtnActionPerformed
 
 
     public static void main(String args[]) {
