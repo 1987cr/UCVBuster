@@ -44,8 +44,8 @@ public class UCVBuster {
                 break;
                 
             case 1:
-                laTimer = new ListaAtrasadosTimer();
-                cTimer = new CarteleraTimer();
+                //laTimer = new ListaAtrasadosTimer();
+                //cTimer = new CarteleraTimer();
                 acceso = new IAcceso();
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);
@@ -155,7 +155,18 @@ public class UCVBuster {
             case 19: // Aceptar: Registrar Cliente
                 // cuando se verifica si el cliente ya está registrado?
                 break;
+            
+            case 20: // Salir: Empleado, Administrador
+                if(rolAdmin != null)
+                    rolAdmin.setVisible(false);
                 
+                if(rolEmpleado != null)
+                    rolEmpleado.setVisible(false);
+                
+                acceso.setLocationRelativeTo(null);
+                acceso.setVisible(true);
+                acceso.setResizable(false);
+                break;
         }        
          
      }

@@ -47,8 +47,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Panel Empleado">
-              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder roundedCorners="true"/>
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder/>
               </Border>
             </TitledBorder>
           </Border>
@@ -64,7 +64,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="regAlquilerBtn" alignment="0" max="32767" attributes="0"/>
                       <Component id="regDevolucionBtn" alignment="0" max="32767" attributes="0"/>
-                      <Component id="consultarAlqBtn" alignment="0" pref="329" max="32767" attributes="0"/>
+                      <Component id="consultarAlqBtn" alignment="0" pref="331" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="SalirBtn" min="-2" pref="94" max="-2" attributes="0"/>
