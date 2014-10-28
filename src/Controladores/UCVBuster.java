@@ -6,6 +6,7 @@ import Interfaces.IEmpleado;
 import Interfaces.IRegDevolucion;
 import Interfaces.IRegAlquiler;
 import Interfaces.IConsultar_alquileres;
+import Interfaces.IRegCliente;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.CarteleraTimer;
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class UCVBuster {
     private IRegAlquiler rolRegAlquiler;
     private IRegDevolucion rolRegDevolucion;
     private IConsultar_alquileres rolConsAlq;
+    private IRegCliente rolRegCliente;
     private ListaAtrasadosTimer laTimer;
     private CarteleraTimer cTimer;
 
@@ -134,6 +136,24 @@ public class UCVBuster {
                 
             case 16: // Buscar Cédula: Consultar Alquileres
                 
+                break;
+                
+            case 17: // Registrar Cliente
+                rolRegCliente = new IRegCliente();
+                rolRegCliente.setLocationRelativeTo(null);
+                rolRegCliente.setVisible(true);
+                rolRegCliente.setResizable(false);
+                rolEmpleado.setEnabled(false);
+                break;
+                
+            case 18: // Cancelar: Registrar Cliente
+                rolRegCliente.setVisible(false);
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
+                break;
+                
+            case 19: // Aceptar: Registrar Cliente
+                // cuando se verifica si el cliente ya está registrado?
                 break;
         }        
          

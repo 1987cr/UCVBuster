@@ -25,6 +25,7 @@ public class IEmpleado extends javax.swing.JFrame {
         consultarAlqBtn = new javax.swing.JButton();
         personalizarVidBtn = new javax.swing.JButton();
         SalirBtn = new javax.swing.JButton();
+        regClienteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Empleado");
@@ -47,6 +48,11 @@ public class IEmpleado extends javax.swing.JFrame {
         });
 
         consultarAlqBtn.setText("Consultar Alquileres");
+        consultarAlqBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarAlqBtnActionPerformed(evt);
+            }
+        });
 
         personalizarVidBtn.setText("Personalizar Video ");
 
@@ -54,6 +60,13 @@ public class IEmpleado extends javax.swing.JFrame {
         SalirBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirBtnActionPerformed(evt);
+            }
+        });
+
+        regClienteBtn.setText("Registrar Cliente");
+        regClienteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regClienteBtnActionPerformed(evt);
             }
         });
 
@@ -66,11 +79,12 @@ public class IEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(regAlquilerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(regDevolucionBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(consultarAlqBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-                    .addComponent(personalizarVidBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(consultarAlqBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(regClienteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(personalizarVidBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,10 +97,12 @@ public class IEmpleado extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(consultarAlqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(personalizarVidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(regClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(personalizarVidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,8 +118,8 @@ public class IEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -133,6 +149,22 @@ public class IEmpleado extends javax.swing.JFrame {
             Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_regDevolucionBtnActionPerformed
+
+    private void consultarAlqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarAlqBtnActionPerformed
+        try {
+            central.seleccionarOpcion(14);
+        } catch (IOException ex) {
+            Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_consultarAlqBtnActionPerformed
+
+    private void regClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regClienteBtnActionPerformed
+        try {
+            central.seleccionarOpcion(17);
+        } catch (IOException ex) {
+            Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_regClienteBtnActionPerformed
 
 
     public static void main(String args[]) {
@@ -173,6 +205,7 @@ public class IEmpleado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton personalizarVidBtn;
     private javax.swing.JButton regAlquilerBtn;
+    private javax.swing.JButton regClienteBtn;
     private javax.swing.JButton regDevolucionBtn;
     // End of variables declaration//GEN-END:variables
 }

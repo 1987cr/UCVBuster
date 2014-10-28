@@ -35,8 +35,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,14 +62,15 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="regAlquilerBtn" max="32767" attributes="0"/>
-                      <Component id="regDevolucionBtn" max="32767" attributes="0"/>
-                      <Component id="consultarAlqBtn" alignment="0" pref="330" max="32767" attributes="0"/>
-                      <Component id="personalizarVidBtn" alignment="0" max="32767" attributes="0"/>
+                      <Component id="regAlquilerBtn" alignment="0" max="32767" attributes="0"/>
+                      <Component id="regDevolucionBtn" alignment="0" max="32767" attributes="0"/>
+                      <Component id="consultarAlqBtn" alignment="0" pref="329" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="SalirBtn" min="-2" pref="94" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="regClienteBtn" alignment="0" max="32767" attributes="0"/>
+                      <Component id="personalizarVidBtn" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -84,11 +85,13 @@
                   <Component id="regDevolucionBtn" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="consultarAlqBtn" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Component id="regClienteBtn" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="personalizarVidBtn" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
                   <Component id="SalirBtn" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,6 +117,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar Alquileres"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarAlqBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="personalizarVidBtn">
           <Properties>
@@ -126,6 +132,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SalirBtnActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="regClienteBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Registrar Cliente"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regClienteBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
