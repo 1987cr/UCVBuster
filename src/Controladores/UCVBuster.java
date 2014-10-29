@@ -9,10 +9,14 @@ import Interfaces.IRegCliente;
 import Interfaces.IRegDevolucion;
 import Interfaces.ISelFoto;
 import Interfaces.ISelOpciones;
+import Modelo.BordeNegro;
 import Modelo.BordeRojo;
 import Modelo.CarteleraTimer;
 import Modelo.ConcretePersonalizarVideo;
+import Modelo.LetrasGrandes;
+import Modelo.LetrasPequenas;
 import Modelo.ListaAtrasadosTimer;
+import Modelo.MarcoBurbujas;
 import Modelo.MarcoGrama;
 import java.io.IOException;
 
@@ -33,6 +37,12 @@ public class UCVBuster {
     private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
     private CarteleraTimer cTimer;
+    private LetrasGrandes lGra;
+    private LetrasPequenas lPeq;
+    private MarcoGrama mGra;
+    private MarcoBurbujas mBub;
+    private BordeRojo bRed;
+    private BordeNegro bNeg;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -190,21 +200,41 @@ public class UCVBuster {
                 rolSelOpciones.setLocationRelativeTo(null);
                 rolSelOpciones.setVisible(true);
                 rolSelOpciones.setResizable(false);
-                rolSelOpciones.setVisible(false);
+                rolSelFoto.setVisible(false);
                 
                 base = new ConcretePersonalizarVideo(rolSelFoto.getFoto(), rolSelFoto.getDestino(), rolSelFoto.getCedula());
                 //MarcoGrama mGRama = new MarcoGrama(base);
                 //BordeRojo bRojo = new BordeRojo(base);
                 break;
                 
-            case 23: // Siguiente: Seleccionar Letra
+            case 23: // Finalizar: Seleccionar Opciones
+                                
+                if(rolSelOpciones.getLetra() == 1)
+                   lPeq = new LetrasPequenas(base);
+                    
+                if(rolSelOpciones.getLetra() == 2)
+                    lGra = new LetrasGrandes(base);
+                
+                if(rolSelOpciones.getMarco() == 1)
+                   mGra = new MarcoGrama(base);
+                    
+                if(rolSelOpciones.getMarco() == 2)
+                   mBub = new MarcoBurbujas(base);
+                
+                if(rolSelOpciones.getBorde() == 1)
+                   bRed = new BordeRojo(base);
+                    
+                if(rolSelOpciones.getBorde() == 2)
+                   bNeg = new BordeNegro(base);
+                
+                
                 
                 break;
                 
-            case 24: // Siguiente: Seleccionar Marco
+            case 24: 
                 break;
                 
-            case 25: // Siguiente: Seleccionar Borde
+            case 25: 
                 break;
         }        
          

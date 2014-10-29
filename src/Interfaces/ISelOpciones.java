@@ -2,6 +2,9 @@
 package Interfaces;
 
 import Controladores.UCVBuster;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ISelOpciones extends javax.swing.JFrame {
@@ -12,7 +15,19 @@ public class ISelOpciones extends javax.swing.JFrame {
         this.central = UCVBuster.Instance();
         initComponents();
     }
-
+    
+    public int getLetra(){
+        return letraComboBox.getSelectedIndex();
+    }
+    
+    public int getMarco(){
+        return marcoComboBox.getSelectedIndex();
+    }
+        
+    public int getBorde(){
+        return bordeComboBox.getSelectedIndex();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,6 +109,11 @@ public class ISelOpciones extends javax.swing.JFrame {
         );
 
         jButton2.setText("Fuinalizar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +140,14 @@ public class ISelOpciones extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            central.seleccionarOpcion(23);
+        } catch (IOException ex) {
+            Logger.getLogger(ISelOpciones.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
