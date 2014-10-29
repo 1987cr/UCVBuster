@@ -108,7 +108,8 @@ public class ISelOpciones extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Fuinalizar");
+        jButton2.setText("Finalizar");
+        jButton2.setActionCommand("Finalizar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

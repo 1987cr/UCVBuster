@@ -18,6 +18,7 @@ public class VideoDecorator implements PersonalizarVideo {
         pvEntity.mergeImages(overlayName, sourcePath, targetPath);
     }
 
+    @Override
     public String getTargetPath() {
         return pvEntity.getTargetPath();
     }
