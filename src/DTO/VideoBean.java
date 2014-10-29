@@ -17,7 +17,8 @@ public class VideoBean  implements DTO {
     private String clasificacion ;
     private String  genero ;
     private String resumen;
-
+    private int locales_id_local;
+    
     public VideoBean(){}
     
     public void setId_video(int id_video) {
@@ -67,6 +68,6 @@ public class VideoBean  implements DTO {
     public int getLocales_id_local() {
         return locales_id_local;
     }
-    private int locales_id_local;
+    
     
 }

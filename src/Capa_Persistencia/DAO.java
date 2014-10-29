@@ -6,7 +6,11 @@
 
 package Capa_Persistencia;
 
+import DTO.AlquilerBean;
+import DTO.ClienteBean;
+import DTO.VideoBean;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -33,6 +37,12 @@ public interface DAO {
               int clientes_id_cliente);
        
     public abstract void devolver_video (int video, int cliente);
+    
+    public abstract ClienteBean get_cliente(int id_cliente);
+    
+    public abstract VideoBean get_video(int id_video);
+    
+    public abstract ArrayList<AlquilerBean>  get_alquiler(int id_alquiler);
        
    
              

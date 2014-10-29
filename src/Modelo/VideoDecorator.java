@@ -2,5 +2,5 @@
 package Modelo;
 
 public interface VideoDecorator {
-    public abstract mergeImages();
+    public abstract void mergeImages();
 }

@@ -6,12 +6,17 @@
 
 package Capa_Persistencia;
 
+import DTO.AlquilerBean;
+import DTO.ClienteBean;
+import DTO.DTO;
+import DTO.VideoBean;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -94,4 +99,79 @@ public class Oracle implements DAO {
           }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
     }
     
+    public ClienteBean get_cliente(int id_cliente){    
+         
+        ClienteBean persona= new ClienteBean();
+        
+        try ( Connection con = conectar();){
+            Statement stmt = con.createStatement();
+            ResultSet rset =stmt.executeQuery("select * from cliente where id_cliente ="+id_cliente);
+             
+            while (rset.next()){
+                persona.setId_cliente(rset.getInt(1));
+                persona.setNombre(rset.getString(2));
+                persona.setDireccion(rset.getString(3));
+                persona.setSalario_mensual(rset.getInt(4));
+                persona.setTelefono(rset.getInt(5));
+                persona.setPotencial(rset.getString(6));
+                persona.setEmail(rset.getString(7));
+                persona.setSuscripto(rset.getString(8));
+             }
+           
+            stmt.close();
+            con.close();
+       }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+        
+        return persona;
+    }
+    
+    public VideoBean get_video(int id_video){    
+        
+        VideoBean video= new VideoBean();
+        
+        try ( Connection con = conectar();){
+            Statement stmt = con.createStatement();
+             ResultSet rset =stmt.executeQuery("select * from video where id_video ="+id_video);
+             
+             while (rset.next()){
+                video.setId_video(rset.getInt(1));
+                video.setNombre(rset.getString(2));
+                video.setClasificacion(rset.getString(3));
+                video.setGenero(rset.getString(4));
+                video.setResumen(rset.getString(5));
+                video.setLocales_id_local(rset.getInt(6));                
+             }
+           
+            stmt.close();
+            con.close();
+       }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+        
+        return video;
+    }
+    
+    @Override
+    public ArrayList<AlquilerBean> get_alquiler(int id_cliente){ 
+        
+          ArrayList lista = new ArrayList<AlquilerBean>();
+                  
+        try ( Connection con = conectar();){
+            Statement stmt = con.createStatement();
+            ResultSet rset =stmt.executeQuery("select * from alquiler where clientes_id_cliente ="+id_cliente);
+            
+            while (rset.next()){
+                AlquilerBean alquiler= new AlquilerBean();
+                alquiler.setId_alquiler(rset.getInt(1));
+                alquiler.setFecha_alquiler(rset.getDate(2));
+                alquiler.SetFecha_planeada_entrega(rset.getDate(3));
+                alquiler.getVideo_id_video(rset.getInt(4));
+                alquiler.getClientes_id_cliente(rset.getInt(5));  
+                lista.add(alquiler);
+             }
+           
+            stmt.close();
+            con.close();
+       }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+        
+        return lista;
+    }
 }
