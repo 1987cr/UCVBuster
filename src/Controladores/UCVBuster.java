@@ -8,8 +8,12 @@ import Interfaces.IRegAlquiler;
 import Interfaces.IRegCliente;
 import Interfaces.IRegDevolucion;
 import Interfaces.ISelFoto;
+import Interfaces.ISelOpciones;
+import Modelo.BordeRojo;
 import Modelo.CarteleraTimer;
+import Modelo.ConcretePersonalizarVideo;
 import Modelo.ListaAtrasadosTimer;
+import Modelo.MarcoGrama;
 import java.io.IOException;
 
 
@@ -24,7 +28,9 @@ public class UCVBuster {
     private IConsultar_alquileres rolConsAlq;
     private IRegCliente rolRegCliente;
     private ISelFoto rolSelFoto;
+    private ISelOpciones rolSelOpciones;
     
+    private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
     private CarteleraTimer cTimer;
 
@@ -171,12 +177,34 @@ public class UCVBuster {
                 acceso.setResizable(false);
                 break;
                 
-            case 21:
+            case 21: // Personalizar Video - Seleccionar Foto
                 rolSelFoto = new ISelFoto();
                 rolSelFoto.setLocationRelativeTo(null);
                 rolSelFoto.setVisible(true);
                 rolSelFoto.setResizable(false);
                 rolEmpleado.setEnabled(false);
+                break;
+                
+            case 22: // Siguiente: Seleccionar Foto
+                rolSelOpciones = new ISelOpciones();
+                rolSelOpciones.setLocationRelativeTo(null);
+                rolSelOpciones.setVisible(true);
+                rolSelOpciones.setResizable(false);
+                rolSelOpciones.setVisible(false);
+                
+                base = new ConcretePersonalizarVideo(rolSelFoto.getFoto(), rolSelFoto.getDestino(), rolSelFoto.getCedula());
+                //MarcoGrama mGRama = new MarcoGrama(base);
+                //BordeRojo bRojo = new BordeRojo(base);
+                break;
+                
+            case 23: // Siguiente: Seleccionar Letra
+                
+                break;
+                
+            case 24: // Siguiente: Seleccionar Marco
+                break;
+                
+            case 25: // Siguiente: Seleccionar Borde
                 break;
         }        
          

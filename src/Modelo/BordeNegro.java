@@ -10,6 +10,6 @@ package Modelo;
  *
  * @author hector
  */
-public class ConcreteVideoDecorator {
+public class BordeNegro {
     
 }
