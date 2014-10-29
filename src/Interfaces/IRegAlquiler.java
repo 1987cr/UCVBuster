@@ -224,6 +224,10 @@ public class IRegAlquiler extends javax.swing.JFrame {
     private void buscarCedulaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarCedulaBtnActionPerformed
         try {
             central.seleccionarOpcion(7);
+            
+            // si no aparece, entonces lanza error y ve al case 17
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(IRegAlquiler.class.getName()).log(Level.SEVERE, null, ex);
         }

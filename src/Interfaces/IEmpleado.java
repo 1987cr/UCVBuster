@@ -25,7 +25,6 @@ public class IEmpleado extends javax.swing.JFrame {
         consultarAlqBtn = new javax.swing.JButton();
         personalizarVidBtn = new javax.swing.JButton();
         SalirBtn = new javax.swing.JButton();
-        regClienteBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Empleado");
@@ -68,13 +67,6 @@ public class IEmpleado extends javax.swing.JFrame {
             }
         });
 
-        regClienteBtn.setText("Registrar Cliente");
-        regClienteBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regClienteBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -88,7 +80,6 @@ public class IEmpleado extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(regClienteBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(personalizarVidBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -102,10 +93,8 @@ public class IEmpleado extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(consultarAlqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(regClienteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(personalizarVidBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(SalirBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -123,8 +112,8 @@ public class IEmpleado extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -162,14 +151,6 @@ public class IEmpleado extends javax.swing.JFrame {
             Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_consultarAlqBtnActionPerformed
-
-    private void regClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regClienteBtnActionPerformed
-        try {
-            central.seleccionarOpcion(17);
-        } catch (IOException ex) {
-            Logger.getLogger(IEmpleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_regClienteBtnActionPerformed
 
     private void personalizarVidBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalizarVidBtnActionPerformed
         try {
@@ -218,7 +199,6 @@ public class IEmpleado extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton personalizarVidBtn;
     private javax.swing.JButton regAlquilerBtn;
-    private javax.swing.JButton regClienteBtn;
     private javax.swing.JButton regDevolucionBtn;
     // End of variables declaration//GEN-END:variables
 }

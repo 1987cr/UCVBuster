@@ -164,13 +164,13 @@ public class UCVBuster {
                 rolRegCliente.setLocationRelativeTo(null);
                 rolRegCliente.setVisible(true);
                 rolRegCliente.setResizable(false);
-                rolEmpleado.setEnabled(false);
+                rolRegAlquiler.setEnabled(false);
                 break;
                 
             case 18: // Cancelar: Registrar Cliente
                 rolRegCliente.setVisible(false);
-                rolEmpleado.setEnabled(true);
-                rolEmpleado.setVisible(true);
+                rolRegAlquiler.setEnabled(true);
+                rolRegAlquiler.setVisible(true);
                 break;
                 
             case 19: // Aceptar: Registrar Cliente
