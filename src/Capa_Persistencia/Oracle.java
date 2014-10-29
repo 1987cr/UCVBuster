@@ -30,7 +30,7 @@ public class Oracle implements DAO {
             Connection con=null;
         try{ 
               Class.forName("oracle.jdbc.driver.OracleDriver");
-              con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "system", "123456");
+              con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "PATRONES", "1234");
 
         }catch(  ClassNotFoundException | SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
         return con;
@@ -60,8 +60,12 @@ public class Oracle implements DAO {
     public void add_cliente(int cedula, String nombre, String direccion, int salario_mensual, int telefono, String protencial, String email, String suscripto) {
         try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
-                 stmt.executeQuery("exec add_cliente("+ cedula +","+  nombre +","+  direccion +","+ salario_mensual +","+ 
-                                                        telefono +","+ protencial +","+ email +","+ suscripto+")");
+                 String query = "INSERT INTO clientes (id_cliente,nombre,direccion,salario_mensual,telefono,potencial,email,suscrito) VALUES("
+                         + cedula +",'"+  nombre +"','"+  direccion +"',"+ salario_mensual +"," 
+                         + telefono +",'"+ protencial +"','"+ email +"','"+ suscripto+"')";
+
+                 System.out.println(query);
+                 stmt.executeQuery(query);
                  stmt.close();
                  con.close();
           }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}

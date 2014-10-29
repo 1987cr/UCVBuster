@@ -15,36 +15,40 @@ public class IRegCliente extends javax.swing.JFrame {
         initComponents();
     }
 
-    String getCedula(){
+    public String getCedula(){
         return cedulaField.getText();
     }
     
-    String getNombre(){
+    public String getNombre(){
         return nombreField.getText();
     }
     
-    String getDireccion(){
+    public String getDireccion(){
         return direccionArea.getText();
     }
     
-    String getTelefono(){
+    public String getTelefono(){
         return telefonoField.getText();
     }
     
-    String getCorreo(){
+    public String getCorreo(){
         return correoField.getText();
     }
     
-    String getSalario(){
+    public String getSalario(){
         return salarioField.getText();
     }
     
-    Boolean getPotencial(){
-        return potencialCheckBox.isSelected();
+    public String getPotencial(){
+        if(potencialCheckBox.isSelected())
+            return "si";
+        return "no";
     }
     
-    Boolean getSuscribirse(){
-        return suscribirseCheckBox.isSelected();
+    public String getSuscribirse(){
+        if(suscribirseCheckBox.isSelected())
+            return "si";
+        return "no";           
     }
     
     
@@ -167,7 +171,11 @@ public class IRegCliente extends javax.swing.JFrame {
         });
 
         aceptarBtn.setText("Aceptar");
-        aceptarBtn.setEnabled(false);
+        aceptarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,6 +214,10 @@ public class IRegCliente extends javax.swing.JFrame {
             Logger.getLogger(IRegCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cancelarBtnActionPerformed
+
+    private void aceptarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBtnActionPerformed
+
+    }//GEN-LAST:event_aceptarBtnActionPerformed
 
     /**
      * @param args the command line arguments
