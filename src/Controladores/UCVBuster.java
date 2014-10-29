@@ -18,6 +18,7 @@ import Modelo.LetrasPequenas;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.MarcoBurbujas;
 import Modelo.MarcoGrama;
+import Modelo.ProcesarVideo;
 import java.io.IOException;
 
 
@@ -43,6 +44,7 @@ public class UCVBuster {
     private MarcoBurbujas mBub;
     private BordeRojo bRed;
     private BordeNegro bNeg;
+    ProcesarVideo procVid;
 
     private UCVBuster (){
         uniqueInstance = this;//
@@ -203,8 +205,7 @@ public class UCVBuster {
                 rolSelFoto.setVisible(false);
                 
                 base = new ConcretePersonalizarVideo(rolSelFoto.getFoto(), rolSelFoto.getDestino(), rolSelFoto.getCedula());
-                //MarcoGrama mGRama = new MarcoGrama(base);
-                //BordeRojo bRojo = new BordeRojo(base);
+
                 break;
                 
             case 23: // Finalizar: Seleccionar Opciones
@@ -227,8 +228,11 @@ public class UCVBuster {
                 if(rolSelOpciones.getBorde() == 2)
                    bNeg = new BordeNegro(base);
                 
+                procVid = new ProcesarVideo(rolSelFoto.getDestino(), rolSelFoto.getCedula());
                 
-                
+                rolSelOpciones.setVisible(false);
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
                 break;
                 
             case 24: 
