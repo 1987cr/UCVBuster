@@ -30,7 +30,7 @@ public class Oracle implements DAO {
             Connection con=null;
         try{ 
               Class.forName("oracle.jdbc.driver.OracleDriver");
-              con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "system", "123456");
+              con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "PATRONES", "1234");
 
         }catch(  ClassNotFoundException | SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
         return con;
@@ -81,12 +81,18 @@ public class Oracle implements DAO {
     @Override
     public void add_alquiler(int id_alquiler, Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, int clientes_id_cliente) {
        try ( Connection con = conectar();) {
+           
+           
+           
                  Statement stmt = con.createStatement();
-                 stmt.executeQuery("exec add_alquiler("+ id_alquiler +","+  fecha_alquiler +","+  fecha_planeada_entrega +","+ video_id_video +","+ 
-                                                        clientes_id_cliente +")");
+                 String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
+                                                        clientes_id_cliente +")";
+                 System.out.println(query);
+                 stmt.executeQuery(query);
+                 
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+          }catch( SQLException e ) { System.out.println("Error en add_alquiler "); System.out.println(e);}
     }
 
     @Override
@@ -105,9 +111,13 @@ public class Oracle implements DAO {
         
         try ( Connection con = conectar();){
             Statement stmt = con.createStatement();
-            ResultSet rset =stmt.executeQuery("select * from cliente where id_cliente ="+id_cliente);
-             
+            String query ="select * from clientes where id_cliente ="+id_cliente;
+            ResultSet rset =stmt.executeQuery(query);
+           
+            
             while (rset.next()){
+               // System.out.println("hola");
+               // System.out.println(rset.getInt(1));
                 persona.setId_cliente(rset.getInt(1));
                 persona.setNombre(rset.getString(2));
                 persona.setDireccion(rset.getString(3));
@@ -117,10 +127,10 @@ public class Oracle implements DAO {
                 persona.setEmail(rset.getString(7));
                 persona.setSuscripto(rset.getString(8));
              }
-           
+         
             stmt.close();
             con.close();
-       }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+       }catch( SQLException e ) { System.out.println("error en get_cliente "); System.out.println(e);}
         
         return persona;
     }
@@ -131,7 +141,8 @@ public class Oracle implements DAO {
         
         try ( Connection con = conectar();){
             Statement stmt = con.createStatement();
-             ResultSet rset =stmt.executeQuery("select * from video where id_video ="+id_video);
+            String query ="select * from video where id_video ="+id_video;
+            ResultSet rset =stmt.executeQuery(query);
              
              while (rset.next()){
                 video.setId_video(rset.getInt(1));
@@ -144,7 +155,7 @@ public class Oracle implements DAO {
            
             stmt.close();
             con.close();
-       }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+       }catch( SQLException e ) { System.out.println(" error en get_video "); System.out.println(e);}
         
         return video;
     }
@@ -156,7 +167,8 @@ public class Oracle implements DAO {
                   
         try ( Connection con = conectar();){
             Statement stmt = con.createStatement();
-            ResultSet rset =stmt.executeQuery("select * from alquiler where clientes_id_cliente ="+id_cliente);
+            String query ="select * from alquiler where clientes_id_cliente ="+id_cliente;
+            ResultSet rset =stmt.executeQuery(query);
             
             while (rset.next()){
                 AlquilerBean alquiler= new AlquilerBean();
@@ -170,7 +182,7 @@ public class Oracle implements DAO {
            
             stmt.close();
             con.close();
-       }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+       }catch( SQLException e ) { System.out.println(" error en get_alquiler "); System.out.println(e);}
         
         return lista;
     }
