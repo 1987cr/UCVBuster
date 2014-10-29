@@ -1,5 +1,13 @@
 package Controladores;
 
+import Capa_Persistencia.Oracle;
+import Decorator.BordeNegro;
+import Decorator.BordeRojo;
+import Decorator.ConcretePersonalizarVideo;
+import Decorator.LetrasGrandes;
+import Decorator.LetrasPequenas;
+import Decorator.MarcoBurbujas;
+import Decorator.MarcoGrama;
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
 import Interfaces.IConsultar_alquileres;
@@ -7,18 +15,11 @@ import Interfaces.IEmpleado;
 import Interfaces.IRegAlquiler;
 import Interfaces.IRegCliente;
 import Interfaces.IRegDevolucion;
+import Interfaces.IRegVideo;
 import Interfaces.ISelFoto;
 import Interfaces.ISelOpciones;
-import Interfaces.IRegVideo;
-import Decorator.BordeNegro;
-import Decorator.BordeRojo;
 import Modelo.CarteleraTimer;
-import Decorator.ConcretePersonalizarVideo;
-import Decorator.LetrasGrandes;
-import Decorator.LetrasPequenas;
 import Modelo.ListaAtrasadosTimer;
-import Decorator.MarcoBurbujas;
-import Decorator.MarcoGrama;
 import Modelo.ProcesarVideo;
 import java.io.IOException;
 
@@ -46,8 +47,10 @@ public class UCVBuster {
     private MarcoBurbujas mBub;
     private BordeRojo bRed;
     private BordeNegro bNeg;
-    ProcesarVideo procVid;
+    private ProcesarVideo procVid;
 
+    private Oracle db;
+    
     private UCVBuster (){
         uniqueInstance = this;//
     }
@@ -69,6 +72,7 @@ public class UCVBuster {
             case 1:
                 //laTimer = new ListaAtrasadosTimer();
                 //cTimer = new CarteleraTimer();
+                db = new Oracle();
                 acceso = new IAcceso();
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);
@@ -176,7 +180,19 @@ public class UCVBuster {
                 break;
                 
             case 19: // Aceptar: Registrar Cliente
-                // cuando se verifica si el cliente ya está registrado?
+
+                db.add_cliente(Integer.parseInt(rolRegCliente.getCedula()), 
+                               rolRegCliente.getName(), 
+                               rolRegCliente.getDireccion(), 
+                               Integer.parseInt(rolRegCliente.getSalario()), 
+                               Integer.parseInt(rolRegCliente.getTelefono()),
+                               rolRegCliente.getPotencial(), 
+                               rolRegCliente.getCorreo(), 
+                               rolRegCliente.getSuscribirse()
+                );
+                rolRegCliente.setVisible(false);
+                rolRegAlquiler.setEnabled(true);
+                rolRegAlquiler.setVisible(true);
                 break;
             
             case 20: // Salir: Empleado, Administrador
@@ -191,7 +207,7 @@ public class UCVBuster {
                 acceso.setResizable(false);
                 break;
                 
-            case 21: // Personalizar Video - Seleccionar Foto
+            case 21: // Personalizar Video
                 rolSelFoto = new ISelFoto();
                 rolSelFoto.setLocationRelativeTo(null);
                 rolSelFoto.setVisible(true);
@@ -216,7 +232,7 @@ public class UCVBuster {
                    lPeq = new LetrasPequenas(base);
                     
                 if(rolSelOpciones.getLetra() == 2)
-                    lGra = new LetrasGrandes(base);
+                   lGra = new LetrasGrandes(base);
                 
                 if(rolSelOpciones.getMarco() == 1)
                    mGra = new MarcoGrama(base);

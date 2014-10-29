@@ -37,7 +37,7 @@ public class Correo {
                 message.setSubject("UCVBuster - Cartelera");  
                 message.setText(body);  
 
-                //send message  
+                // Mandar Mensaje 
                 Transport.send(message);  
 
                 return("El mensaje ha sido enviado satisfactoriamente.");  

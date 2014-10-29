@@ -2,7 +2,9 @@
 package Controladores;
 
 import Capa_Persistencia.Oracle;
+
 import DTO.ClienteBean;
+
 import java.io.IOException;
 
 public class Client {
@@ -20,8 +22,7 @@ public class Client {
         UCVBuster b = UCVBuster.Instance();
         b.seleccionarOpcion(1);
         
-        
-        
+
     }
 
 }
