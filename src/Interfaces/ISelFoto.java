@@ -60,6 +60,11 @@ public class ISelFoto extends javax.swing.JFrame {
         });
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Personalizar Video"));
 
@@ -225,6 +230,14 @@ public class ISelFoto extends javax.swing.JFrame {
         if(!destinoField.getText().equals("") && !fotoField.getText().equals("") && !cedulaField.getText().equals(""))
             siguienteBtn.setEnabled(true);
     }//GEN-LAST:event_cedulaFieldCaretUpdate
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            central.seleccionarOpcion(24);
+        } catch (IOException ex) {
+            Logger.getLogger(ISelFoto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

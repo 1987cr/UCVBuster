@@ -9,6 +9,7 @@ import Interfaces.IRegCliente;
 import Interfaces.IRegDevolucion;
 import Interfaces.ISelFoto;
 import Interfaces.ISelOpciones;
+import Interfaces.IRegVideo;
 import Modelo.BordeNegro;
 import Modelo.BordeRojo;
 import Modelo.CarteleraTimer;
@@ -34,6 +35,7 @@ public class UCVBuster {
     private IRegCliente rolRegCliente;
     private ISelFoto rolSelFoto;
     private ISelOpciones rolSelOpciones;
+    private IRegVideo rolRegVideo;
     
     private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
@@ -235,10 +237,28 @@ public class UCVBuster {
                 rolEmpleado.setVisible(true);
                 break;
                 
-            case 24: 
+            case 24: // Cancelar: Seleccionar Foto
+                rolSelFoto.setVisible(false);
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
                 break;
                 
-            case 25: 
+            case 25: // Registrar Video
+                rolRegVideo = new IRegVideo();
+                rolRegVideo.setLocationRelativeTo(null);
+                rolRegVideo.setVisible(true);
+                rolRegVideo.setResizable(false);
+                rolAdmin.setEnabled(false);
+                break;
+                
+            case 26: // Cancelar: Registrar Video
+                rolRegVideo.setVisible(false);
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
+                break;
+                
+            case 27: // Aceptar: Registrar Video
+                
                 break;
         }        
          

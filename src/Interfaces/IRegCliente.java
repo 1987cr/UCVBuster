@@ -167,6 +167,7 @@ public class IRegCliente extends javax.swing.JFrame {
         });
 
         aceptarBtn.setText("Aceptar");
+        aceptarBtn.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

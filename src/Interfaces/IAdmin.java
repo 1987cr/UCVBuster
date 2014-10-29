@@ -38,6 +38,11 @@ public class IAdmin extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Panel Administrador"));
 
         jButton1_Incorporar_video.setText("Incorporar Video al Catalogo ");
+        jButton1_Incorporar_video.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_Incorporar_videoActionPerformed(evt);
+            }
+        });
 
         jButton2_desincorporar_video.setText("Desincorporar video del Catalogo");
         jButton2_desincorporar_video.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +139,14 @@ public class IAdmin extends javax.swing.JFrame {
             Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    private void jButton1_Incorporar_videoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_Incorporar_videoActionPerformed
+        try {
+            central.seleccionarOpcion(25);
+        } catch (IOException ex) {
+            Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1_Incorporar_videoActionPerformed
 
     /**
      * @param args the command line arguments
