@@ -1,5 +1,5 @@
 
-package Modelo;
+package Decorator;
 
 public class MarcoBurbujas extends VideoDecorator{
 

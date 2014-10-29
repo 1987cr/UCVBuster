@@ -1,5 +1,5 @@
 
-package Modelo;
+package Decorator;
 
 public class LetrasPequenas extends VideoDecorator{
      public LetrasPequenas(PersonalizarVideo p) {

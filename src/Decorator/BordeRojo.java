@@ -1,5 +1,5 @@
 
-package Modelo;
+package Decorator;
 
 public class BordeRojo extends VideoDecorator{
 

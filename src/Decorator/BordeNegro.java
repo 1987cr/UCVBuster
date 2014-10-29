@@ -1,5 +1,5 @@
 
-package Modelo;
+package Decorator;
 
 public class BordeNegro extends VideoDecorator{
      public BordeNegro(PersonalizarVideo p) {
