@@ -1,10 +1,6 @@
 
 package Modelo;
 
-<<<<<<< HEAD
-public interface VideoDecorator {
-    public abstract void mergeImages();
-=======
 public class VideoDecorator implements PersonalizarVideo {
 
     protected String sourcePath;    
@@ -25,6 +21,4 @@ public class VideoDecorator implements PersonalizarVideo {
     public String getTargetPath() {
         return pvEntity.getTargetPath();
     }
-    
->>>>>>> origin/master
 }
