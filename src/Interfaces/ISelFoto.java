@@ -3,6 +3,9 @@ package Interfaces;
 
 import Controladores.UCVBuster;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -14,27 +17,47 @@ public class ISelFoto extends javax.swing.JFrame {
         this.central = UCVBuster.Instance();
         initComponents();
     }
-
+    
+    public String getCedula(){
+        return cedulaField.getText();
+    }
+    
+    public String getFoto(){
+        return fotoField.getText();
+    }
+    
+    public String getDestino(){
+        return destinoField.getText();
+    }    
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        siguienteBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        fotoField = new javax.swing.JTextField();
         buscarFotoBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        destinoField = new javax.swing.JTextField();
         buscarCarpetaBtn = new javax.swing.JButton();
+        cedulaField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Siguiente");
+        siguienteBtn.setText("Siguiente");
+        siguienteBtn.setEnabled(false);
+        siguienteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteBtnActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
 
@@ -42,7 +65,12 @@ public class ISelFoto extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione la foto del cliente:");
 
-        jTextField1.setEnabled(false);
+        fotoField.setEnabled(false);
+        fotoField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                fotoFieldCaretUpdate(evt);
+            }
+        });
 
         buscarFotoBtn.setText("Buscar");
         buscarFotoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +81,12 @@ public class ISelFoto extends javax.swing.JFrame {
 
         jLabel2.setText("Seleccionar carpeta destino:");
 
-        jTextField2.setEnabled(false);
+        destinoField.setEnabled(false);
+        destinoField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                destinoFieldCaretUpdate(evt);
+            }
+        });
 
         buscarCarpetaBtn.setText("Buscar");
         buscarCarpetaBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +95,14 @@ public class ISelFoto extends javax.swing.JFrame {
             }
         });
 
+        cedulaField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                cedulaFieldCaretUpdate(evt);
+            }
+        });
+
+        jLabel3.setText("Cédula:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -69,34 +110,46 @@ public class ISelFoto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fotoField, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buscarFotoBtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buscarFotoBtn)
-                            .addComponent(buscarCarpetaBtn))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(destinoField, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buscarCarpetaBtn)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(cedulaField)
+                        .addGap(75, 75, 75)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cedulaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fotoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscarFotoBtn))
-                .addGap(25, 25, 25)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(destinoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buscarCarpetaBtn))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -104,14 +157,15 @@ public class ISelFoto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(siguienteBtn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -121,7 +175,7 @@ public class ISelFoto extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(siguienteBtn)
                     .addComponent(jButton2))
                 .addContainerGap())
         );
@@ -135,7 +189,7 @@ public class ISelFoto extends javax.swing.JFrame {
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            jTextField1.setText(selectedFile.getAbsolutePath().replace("\\", "/"));
+            fotoField.setText(selectedFile.getAbsolutePath().replace("\\", "/"));
         }
     }//GEN-LAST:event_buscarFotoBtnActionPerformed
 
@@ -145,9 +199,32 @@ public class ISelFoto extends javax.swing.JFrame {
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            jTextField2.setText(selectedFile.getAbsolutePath().replace("\\", "/"));
+            destinoField.setText(selectedFile.getAbsolutePath().replace("\\", "/"));
         }
     }//GEN-LAST:event_buscarCarpetaBtnActionPerformed
+
+    private void fotoFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_fotoFieldCaretUpdate
+        if(!destinoField.getText().equals("") && !fotoField.getText().equals("") && !cedulaField.getText().equals(""))
+            siguienteBtn.setEnabled(true);
+    }//GEN-LAST:event_fotoFieldCaretUpdate
+
+    private void destinoFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_destinoFieldCaretUpdate
+        if(!destinoField.getText().equals("") && !fotoField.getText().equals("") && !cedulaField.getText().equals(""))
+            siguienteBtn.setEnabled(true);
+    }//GEN-LAST:event_destinoFieldCaretUpdate
+
+    private void siguienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBtnActionPerformed
+        try {
+            central.seleccionarOpcion(22);
+        } catch (IOException ex) {
+            Logger.getLogger(ISelFoto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_siguienteBtnActionPerformed
+
+    private void cedulaFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_cedulaFieldCaretUpdate
+        if(!destinoField.getText().equals("") && !fotoField.getText().equals("") && !cedulaField.getText().equals(""))
+            siguienteBtn.setEnabled(true);
+    }//GEN-LAST:event_cedulaFieldCaretUpdate
 
     /**
      * @param args the command line arguments
@@ -187,13 +264,15 @@ public class ISelFoto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buscarCarpetaBtn;
     private javax.swing.JButton buscarFotoBtn;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField cedulaField;
+    private javax.swing.JTextField destinoField;
+    private javax.swing.JTextField fotoField;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton siguienteBtn;
     // End of variables declaration//GEN-END:variables
 }
