@@ -18,8 +18,10 @@ public class AlquilerBean implements DTO {
     private Date fecha_planeada_entrega ;
     private int video_id_video ; 
     private int clientes_id_cliente ;
+  
     
     public AlquilerBean() {}//constructor
+
     
     public int getId_alquiler(){
         return this.id_alquiler;

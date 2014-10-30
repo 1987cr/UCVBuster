@@ -189,7 +189,7 @@ public class UCVBuster {
                                rolRegCliente.getName(), 
                                rolRegCliente.getDireccion(), 
                                Integer.parseInt(rolRegCliente.getSalario()), 
-                               Integer.parseInt(rolRegCliente.getTelefono()),
+                               (rolRegCliente.getTelefono()),
                                rolRegCliente.getPotencial(), 
                                rolRegCliente.getCorreo(), 
                                rolRegCliente.getSuscribirse()
