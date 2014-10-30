@@ -164,7 +164,33 @@ public class Oracle implements DAO {
           }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}
     }
     
-      public ArrayList<String> get_suscritos(){
+     public ArrayList<ClienteBean> get_atrasados(){
+       
+          ArrayList lista = new ArrayList<ClienteBean>();
+                  
+        try ( Connection con = conectar();){
+            Statement stmt = con.createStatement();
+            String query ="select * from atrasos";
+            ResultSet rset =stmt.executeQuery(query);
+            
+            while (rset.next()){
+                ClienteBean cli= new ClienteBean();
+                cli.setId_cliente(rset.getInt(1));
+                cli.setNombre(rset.getString(2));
+                cli.setEmail(rset.getString(3));
+                cli.setTelefono(rset.getString(4));
+           
+                lista.add(cli);
+             }
+           
+            stmt.close();
+            con.close();
+       }catch( SQLException e ) { System.out.println(" error en get_catalago "); System.out.println(e);}
+        
+        return lista;
+    }
+    
+    public ArrayList<String> get_suscritos(){
        
           ArrayList lista = new ArrayList<String>();
                   
@@ -232,7 +258,7 @@ public class Oracle implements DAO {
                 persona.setNombre(rset.getString(2));
                 persona.setDireccion(rset.getString(3));
                 persona.setSalario_mensual(rset.getInt(4));
-                persona.setTelefono(rset.getInt(5));
+                persona.setTelefono(rset.getString(5));
                 persona.setPotencial(rset.getString(6));
                 persona.setEmail(rset.getString(7));
                 persona.setSuscripto(rset.getString(8));
