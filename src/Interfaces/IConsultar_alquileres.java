@@ -15,15 +15,15 @@ public class IConsultar_alquileres extends javax.swing.JFrame {
         initComponents();
     }
     
-    void setNombre(String nombre){
+    public void setNombre(String nombre){
         nombreField.setText(nombre);
     }
     
-    void setAlquileres(String nombre){ // aqui es string??
+    public void setAlquileres(String nombre){ // aqui es string??
         alquileresArea.setText(nombre);
     }
     
-    String getCedula(){
+    public String getCedula(){
         return cedulaField.getText();
     }
     

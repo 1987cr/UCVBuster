@@ -15,19 +15,19 @@ public class IRegAlquiler extends javax.swing.JFrame {
         initComponents();
     }
 
-    void setNombre(String nombre){
+    public void setNombre(String nombre){
         nombreField.setText(nombre);
     }
     
-    void setTitulo(String nombre){
+    public void setTitulo(String nombre){
         tituloField.setText(nombre);
     }
     
-    String getCedula(){
+    public String getCedula(){
         return cedulaField.getText();
     }
     
-    String getId(){
+    public String getId(){
         return idField.getText();
     }
     

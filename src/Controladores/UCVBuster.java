@@ -274,7 +274,9 @@ public class UCVBuster {
                 break;
                 
             case 27: // Aceptar: Registrar Video
-                
+                db.add_video(Integer.parseInt(rolRegVideo.getId()),rolRegVideo.getNombre(),
+                        rolRegVideo.getClasificacion(),rolRegVideo.getGenero(),
+                        rolRegVideo.getResumen(),1);
                 break;
         }        
          
@@ -294,6 +296,7 @@ public class UCVBuster {
        }//fin else
     }//fin corroborar_clave
 
+/*
     public void add_video(String id, String nombre, String clasificacion, String genero, String resumen) {
          db.add_video(nombre,clasificacion,genero,resumen,1);
     }
@@ -302,7 +305,7 @@ public class UCVBuster {
        return db.obtenerSeqVideo();
          
     }
-
+*/
     
     
 }

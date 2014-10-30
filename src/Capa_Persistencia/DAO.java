@@ -29,7 +29,7 @@ public interface DAO {
                int telefono, String protencial, String email, String suscripto);
        
      public abstract void add_video
-       ( String nombre, String clasificacion, String genero, 
+       ( int id_video, String nombre, String clasificacion, String genero, 
                String resumen, int locales_id_local);
        
      public abstract void add_alquiler

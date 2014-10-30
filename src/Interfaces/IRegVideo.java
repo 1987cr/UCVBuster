@@ -15,47 +15,25 @@ public class IRegVideo extends javax.swing.JFrame {
     public IRegVideo() {
         this.central = UCVBuster.Instance();
         initComponents();
-        setId(central.obtenerSeqVideo());
-        
     }
 
-    public void setClasificacionField(String clasificacionField) {
-        this.clasificacionField.setText(clasificacionField);
-    }
-
-    public void setGeneroField(String generoField) {
-        this.generoField.setText(generoField) ;
-    }
-
-    public void setNombreField(String nombreField) {
-        this.nombreField.setText(nombreField) ;
-    }
-
-    public void setResumenArea(String resumenArea) {
-        this.resumenArea.setText(resumenArea) ;
-    }
-    
-    void setId(int id){
-        idField.setText(Integer.toString((id)));
-    }
-    
-    String getId(){
+    public String getId(){
         return idField.getText();
     }
     
-    String getNombre(){
+    public String getNombre(){
         return nombreField.getText();
     }
     
-    String getClasificacion(){
+    public String getClasificacion(){
         return clasificacionField.getText();
     }
     
-    String getGenero(){
+    public String getGenero(){
         return generoField.getText();
     }
     
-    String getResumen(){
+    public String getResumen(){
         return resumenArea.getText();
     }
 
@@ -120,9 +98,9 @@ public class IRegVideo extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(idField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nombreField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nombreField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                            .addComponent(idField))))
                 .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,13 +176,12 @@ public class IRegVideo extends javax.swing.JFrame {
 
     private void aceptarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBtnActionPerformed
         
-        central.add_video(getId(),getNombre(),getClasificacion(),getGenero(),getResumen());
-         setNombreField("");
-        setClasificacionField("");
-        setGeneroField("");       
-        setResumenArea("");
-        setId(central.obtenerSeqVideo());
-        // se lleva a la base de datos
+        try {
+            central.seleccionarOpcion(27);
+            // se lleva a la base de datos
+        } catch (IOException ex) {
+            Logger.getLogger(IRegVideo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_aceptarBtnActionPerformed
 

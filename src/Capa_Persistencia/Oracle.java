@@ -96,11 +96,11 @@ public class Oracle implements DAO {
     }
 
     @Override
-    public void add_video( String nombre, String clasificacion, String genero, String resumen, int locales_id_local) {
+    public void add_video( int id_video, String nombre, String clasificacion, String genero, String resumen, int locales_id_local) {
          try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
                  String query = "INSERT INTO video (   id_video,  nombre,         clasificacion,        genero,      resumen,     locales_id_local) VALUES("
-                                                        +" video_seq.NEXTVAL ,'"+  nombre +"','"+  clasificacion +"','"+ genero +"','"+ resumen +"',"+ locales_id_local +")";
+                                                        +" video_seq.NEXTVAL ,'"+  nombre +"','"+  nombre +"','"+  clasificacion +"','"+ genero +"','"+ resumen +"',"+ locales_id_local +")";
                 /* stmt.executeQuery("exec add_video("+ id_video +","+  nombre +","+  clasificacion +","+ genero +","+ 
                                                         resumen +","+ locales_id_local +")");*/
                // System.out.println(query);
