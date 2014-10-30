@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
-import Modelo.Correo;
 import java.util.ArrayList;
 import java.util.Iterator;
 

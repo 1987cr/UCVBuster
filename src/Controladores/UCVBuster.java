@@ -75,7 +75,7 @@ public class UCVBuster {
                 
             case 1:
                 //laTimer = new ListaAtrasadosTimer();
-                //cTimer = new CarteleraTimer();
+                cTimer = new CarteleraTimer();
                 db = new Oracle();
                 acceso = new IAcceso();
                 acceso.setLocationRelativeTo(null);

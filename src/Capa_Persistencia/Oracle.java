@@ -132,7 +132,7 @@ public class Oracle implements DAO {
    
         try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
-                 String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+"\n" +
+                 String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+
                          ",telefono = '"+telefono+"',potencial = '"+protencial+"',email = '"+email+"',suscrito = '"+suscripto+"' WHERE id_cliente="+cedula;
 
                  System.out.println(query);
@@ -149,8 +149,8 @@ public class Oracle implements DAO {
              
              /*Obtener valores */
                  Statement stmt = con.createStatement();
-                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega\n" +
-                                "from alquileres\n" +
+                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega" +
+                                "from alquileres" +
                                 "where "+ video +" =video_id_video  and " +cliente +"= clientes_id_cliente";
                    ResultSet rset = stmt.executeQuery(query);
                    rset.next();
@@ -160,9 +160,9 @@ public class Oracle implements DAO {
                    
               ///   System.out.println("fase1");
                 /* registar en Historico */   
-                 query ="insert into historico_alquileres \n" +
-                        "(id_alquiler, fecha_alquiler, fecha_planeada_devolucion, fecha_real_devolucion, video_id, cliente_id )\n" +
-                        "values \n" +
+                 query ="insert into historico_alquileres" +
+                        "(id_alquiler, fecha_alquiler, fecha_planeada_devolucion, fecha_real_devolucion, video_id, cliente_id )" +
+                        "values" +
                         "("+ id_alquiler +","+ fecha_alquiler +","+ fecha_planeada_entrega +","+ null +","+ video +","+ cliente +")";
                  stmt.executeQuery(query);
                  
