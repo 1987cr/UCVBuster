@@ -4,9 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Controladores/UCVBuster.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Modelo/CarteleraTimer.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IRegCliente.java</file>
             <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Modelo/Correo.java</file>
-            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IEmpleado.java</file>
-            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IRegDevolucion.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IRegVideo.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Capa_Persistencia/DAO.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IConsultarCatalogo.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Capa_Persistencia/Oracle.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/DTO/VideoBean.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/IConsultar_alquileres.java</file>
+            <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Controladores/Client.java</file>
             <file>file:/C:/Users/hector/Documents/Documents/NetBeansProjects/UCVBuster/src/Interfaces/ISelFoto.java</file>
         </group>
     </open-files>

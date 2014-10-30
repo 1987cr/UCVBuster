@@ -48,8 +48,8 @@ public class CarteleraTimer {
         String lista = "";
         Oracle db= new Oracle();
  
-        ArrayList lc = new ArrayList<>();
-        lc = db.get_suscritos();
+        ArrayList lc = db.get_suscritos();
+        
         Iterator i = lc.listIterator();
 
         while(i.hasNext()){
@@ -67,12 +67,11 @@ public class CarteleraTimer {
         String cartelera = "Cartelera: \n\n";
         Oracle db= new Oracle();
         
-        ArrayList lista = new ArrayList<VideoBean>();
-        lista = db.get_catalago();
+        ArrayList lista = db.get_catalago();
+        VideoBean vid;
+        
         Iterator i = lista.listIterator();
-        
-        VideoBean vid = new VideoBean();
-        
+                        
         while(i.hasNext()){
             vid = (VideoBean) i.next();
             cartelera += "- " + vid.getNombre() + "\n";

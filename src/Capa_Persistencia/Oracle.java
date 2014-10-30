@@ -240,7 +240,7 @@ public class Oracle implements DAO {
             
             while (rset.next()){
                 VideoBean video= new VideoBean();
-                //video.setId_video(rset.getInt(1));
+                //video.setId_video(rset.getInt(0));
                 video.setNombre(rset.getString(1));
                 video.setClasificacion(rset.getString(2));
                 video.setGenero(rset.getString(3));

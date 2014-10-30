@@ -4,6 +4,7 @@ import Controladores.UCVBuster;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Vector;
 
 public class IConsultarCatalogo extends javax.swing.JFrame {
     
@@ -13,16 +14,25 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
         this.central = UCVBuster.Instance();
         initComponents();
     }
-
+    
+    public void addPelicula(Vector<String> catalogo){
+        peliculasList.setListData(catalogo);
+    }    
+    
+    public String getPelicula(){
+        return peliculasList.getSelectedValue().toString();
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        peliculasList = new javax.swing.JList();
+        detallesBtn = new javax.swing.JButton();
+        dispBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
@@ -30,19 +40,26 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Consultar Catálogo"));
 
-        jScrollPane2.setViewportView(jList1);
+        peliculasList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                peliculasListValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(peliculasList);
 
-        jButton1.setText("Ver Detalles");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        detallesBtn.setText("Ver Detalles");
+        detallesBtn.setEnabled(false);
+        detallesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                detallesBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Consultar Disponibilidad");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        dispBtn.setText("Consultar Disponibilidad");
+        dispBtn.setEnabled(false);
+        dispBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                dispBtnActionPerformed(evt);
             }
         });
 
@@ -59,8 +76,8 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(detallesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dispBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -72,9 +89,9 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(detallesBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(dispBtn))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -112,21 +129,21 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void detallesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detallesBtnActionPerformed
         try {
             central.seleccionarOpcion(36);
         } catch (IOException ex) {
             Logger.getLogger(IConsultarCatalogo.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_detallesBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void dispBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispBtnActionPerformed
         try {
             central.seleccionarOpcion(37);
         } catch (IOException ex) {
             Logger.getLogger(IConsultarCatalogo.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_dispBtnActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
@@ -135,6 +152,11 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
             Logger.getLogger(IConsultarCatalogo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void peliculasListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_peliculasListValueChanged
+        detallesBtn.setEnabled(true);
+        dispBtn.setEnabled(true);
+    }//GEN-LAST:event_peliculasListValueChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -169,12 +191,12 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton detallesBtn;
+    private javax.swing.JButton dispBtn;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList peliculasList;
     // End of variables declaration//GEN-END:variables
 }

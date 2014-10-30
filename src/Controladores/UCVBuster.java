@@ -12,22 +12,27 @@ import Decorator.MarcoBurbujas;
 import Decorator.MarcoGrama;
 import Interfaces.IAcceso;
 import Interfaces.IAdmin;
+import Interfaces.IConsultarCatalogo;
 import Interfaces.IConsultar_alquileres;
+import Interfaces.IDelCliente;
+import Interfaces.IDelVideo;
+import Interfaces.IDescripcionVideo;
+import Interfaces.IDisponibilidad;
 import Interfaces.IEmpleado;
+import Interfaces.IModCliente;
 import Interfaces.IRegAlquiler;
 import Interfaces.IRegCliente;
 import Interfaces.IRegDevolucion;
 import Interfaces.IRegVideo;
 import Interfaces.ISelFoto;
 import Interfaces.ISelOpciones;
-import Interfaces.IDelVideo;
-import Interfaces.IModCliente;
-import Interfaces.IConsultarCatalogo;
-import Interfaces.IDelCliente;
 import Modelo.CarteleraTimer;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.ProcesarVideo;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
 
 
 public class UCVBuster {
@@ -47,6 +52,8 @@ public class UCVBuster {
     private IModCliente rolModCliente;
     private IConsultarCatalogo rolConsultarCatalogo;
     private IDelCliente rolDelCliente;
+    private IDescripcionVideo rolDescVideo;
+    private IDisponibilidad rolDisponible;
     
     private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
@@ -58,7 +65,9 @@ public class UCVBuster {
     private BordeRojo bRed;
     private BordeNegro bNeg;
     private ProcesarVideo procVid;
-
+    
+    private ArrayList listaPeliculas;
+    
     private Oracle db;
     
     private UCVBuster (){
@@ -114,7 +123,7 @@ public class UCVBuster {
                 break;
                 
             case 5: // Cancelar: Registrar Alquileres
-                rolRegAlquiler.setVisible(false);
+                rolRegAlquiler.dispose();
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
                 break;
@@ -147,7 +156,7 @@ public class UCVBuster {
                 break;
                 
             case 10: // Cancelar: Registrar Devolución
-                rolRegDevolucion.setVisible(false);
+                rolRegDevolucion.dispose();
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
                 break;
@@ -173,7 +182,7 @@ public class UCVBuster {
                 break;
                 
             case 15: // Regresar: Consultar Alquileres
-                rolConsAlq.setVisible(false);
+                rolConsAlq.dispose();
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
                 break;
@@ -191,7 +200,7 @@ public class UCVBuster {
                 break;
                 
             case 18: // Cancelar: Registrar Cliente
-                rolRegCliente.setVisible(false);
+                rolRegCliente.dispose();
                 rolRegAlquiler.setEnabled(true);
                 rolRegAlquiler.setVisible(true);
                 break;
@@ -240,10 +249,10 @@ public class UCVBuster {
                 rolSelOpciones.setLocationRelativeTo(null);
                 rolSelOpciones.setVisible(true);
                 rolSelOpciones.setResizable(false);
-                rolSelFoto.setVisible(false);
                 
                 base = new ConcretePersonalizarVideo(rolSelFoto.getFoto(), rolSelFoto.getDestino(), rolSelFoto.getCedula());
-
+                
+                rolSelFoto.dispose();
                 break;
                 
             case 23: // Finalizar: Seleccionar Opciones
@@ -268,13 +277,13 @@ public class UCVBuster {
                 
                 procVid = new ProcesarVideo(rolSelFoto.getDestino(), rolSelFoto.getCedula());
                 
-                rolSelOpciones.setVisible(false);
+                rolSelOpciones.dispose();
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
                 break;
                 
             case 24: // Cancelar: Seleccionar Foto
-                rolSelFoto.setVisible(false);
+                rolSelFoto.dispose();
                 rolEmpleado.setEnabled(true);
                 rolEmpleado.setVisible(true);
                 break;
@@ -288,7 +297,7 @@ public class UCVBuster {
                 break;
                 
             case 26: // Cancelar: Registrar Video
-                rolRegVideo.setVisible(false);
+                rolRegVideo.dispose();
                 rolAdmin.setEnabled(true);
                 rolAdmin.setVisible(true);
                 break;
@@ -297,7 +306,7 @@ public class UCVBuster {
                 db.add_video(Integer.parseInt(rolRegVideo.getId()),rolRegVideo.getNombre(),
                         rolRegVideo.getClasificacion(),rolRegVideo.getGenero(),
                         rolRegVideo.getResumen(),1);
-                rolRegVideo.setVisible(false);
+                rolRegVideo.dispose();
                 rolAdmin.setEnabled(true);
                 rolAdmin.setVisible(true);
                 break;
@@ -311,7 +320,7 @@ public class UCVBuster {
                 break;
                 
             case 29: // Cancelar: Eliminar Video
-                rolDelVideo.setVisible(false);
+                rolDelVideo.dispose();
                 rolAdmin.setEnabled(true);
                 rolAdmin.setVisible(true);
                 break;
@@ -329,7 +338,7 @@ public class UCVBuster {
                 break;
                 
             case 32: // Cancelar: Modificar Cliente
-                rolModCliente.setVisible(false);
+                rolModCliente.dispose();
                 rolAdmin.setEnabled(true);
                 rolAdmin.setVisible(true);
                 break;
@@ -347,14 +356,65 @@ public class UCVBuster {
                 rolConsultarCatalogo.setLocationRelativeTo(null);
                 rolConsultarCatalogo.setVisible(true);
                 rolConsultarCatalogo.setResizable(false);
+                acceso.setVisible(false);
+                                                               
+                listaPeliculas = db.get_catalago();
+                Vector catalogo = new Vector<>();
+                VideoBean pelicula = null;
+                
+                Iterator i = listaPeliculas.listIterator();
+                
+                while(i.hasNext()){
+                    pelicula = (VideoBean) i.next();
+                    catalogo.add(pelicula.getNombre());
+                }
+                
+                rolConsultarCatalogo.addPelicula(catalogo);
+                
                 break;
                 
             case 36: // Ver Detalles: Consultar Catalogo
+                rolDescVideo = new IDescripcionVideo();
+                rolDescVideo.setLocationRelativeTo(null);
+                rolDescVideo.setVisible(true);
+                rolDescVideo.setResizable(false);
+                rolConsultarCatalogo.setEnabled(false);
+                
+                pelicula = null;
+                
+                i = listaPeliculas.listIterator();
+                
+                while(i.hasNext()){
+                    pelicula = (VideoBean) i.next();
+                    if(pelicula.getNombre().equals(rolConsultarCatalogo.getPelicula()))
+                        break; 
+                }
+                
+                rolDescVideo.setTitulo(pelicula.getNombre());
+                rolDescVideo.setClas(pelicula.getClasificacion());
+                rolDescVideo.setGenero(pelicula.getGenero());
+                rolDescVideo.setResumen(pelicula.getResumen());
                 
                 break;
             
             case 37: // Consultar Disponibilidad: Consultar Catalogo
+                rolDisponible = new IDisponibilidad();
+                rolDisponible.setLocationRelativeTo(null);
+                rolDisponible.setVisible(true);
+                rolDisponible.setResizable(false);
+                rolConsultarCatalogo.setEnabled(false);
                 
+                pelicula = null;
+                
+                i = listaPeliculas.listIterator();
+                
+                while(i.hasNext()){
+                    pelicula = (VideoBean) i.next();
+                    if(pelicula.getNombre().equals(rolConsultarCatalogo.getPelicula()))
+                        break; 
+                }
+                
+                rolDisponible.setDisponibilidad(Integer.toString(pelicula.getCantidad_existencias()));
                 break;
                 
             case 38: // Eliminar Cliente
@@ -377,6 +437,18 @@ public class UCVBuster {
             
             case 41: // Buscar: Eliminar Cliente
                 
+                break;
+                
+            case 42: // Descripción Película: Aceptar
+                rolDescVideo.dispose();
+                rolConsultarCatalogo.setEnabled(true);
+                rolConsultarCatalogo.setVisible(true);
+                break;
+                
+            case 43: // Disponibilidad: Aceptar
+                rolDisponible.dispose();
+                rolConsultarCatalogo.setEnabled(true);
+                rolConsultarCatalogo.setVisible(true);
                 break;
         }        
          
