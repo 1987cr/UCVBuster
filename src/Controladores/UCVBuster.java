@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 
 
 public class UCVBuster {
@@ -91,9 +92,12 @@ public class UCVBuster {
                 break;
                 
             case 1:
-                //laTimer = new ListaAtrasadosTimer();
+                // Timer Lista de Atrasados
+                laTimer = new ListaAtrasadosTimer();
+                // Timer Correo Cartelera
                 cTimer = new CarteleraTimer();
                 db = new Oracle();
+                
                 acceso = new IAcceso();
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);
@@ -346,11 +350,34 @@ public class UCVBuster {
                 break;
                 
             case 33: // Modificar: Modificar Cliente
+                db.upd_cliente(Integer.parseInt(rolModCliente.getCedula()), 
+                               rolModCliente.getNombre(), 
+                               rolModCliente.getDireccion(), 
+                               Integer.parseInt(rolModCliente.getSalario()), 
+                               rolModCliente.getTelefono(), 
+                               rolModCliente.getPotencial(), 
+                               rolModCliente.getCorreo(), 
+                               rolModCliente.getSuscribirse());
                 
+                rolModCliente.dispose();
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
                 break;
             
             case 34: // Buscar: Modificar Cliente
-                // se busca la ci en la bd y luego se coloca en gris
+                ClienteBean c = db.get_cliente(Integer.parseInt(rolModCliente.getCedula()));
+                
+                if(c.getId_cliente() == 0){
+                    JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                }else{
+                    rolModCliente.disableCedula();
+                    rolModCliente.setNombre(c.getNombre());
+                    rolModCliente.setCorreo(c.getEmail());
+                    rolModCliente.setDireccion(c.getDireccion());
+                    rolModCliente.setTelefono(c.getTelefono());
+                    rolModCliente.setSalario(Integer.toString(c.getSalario_mensual()));
+                }              
+                
                 break;
                 
             case 35: // Consultar Catalogo

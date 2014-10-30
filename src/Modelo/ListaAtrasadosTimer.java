@@ -1,12 +1,18 @@
 package Modelo;
 
+import Controladores.UCVBuster;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ListaAtrasadosTimer {
+    
+    private UCVBuster central;
     
     TimerTask timerTask;
 
@@ -25,7 +31,11 @@ public class ListaAtrasadosTimer {
                 int min = Integer.parseInt(tokens[1]);
                 
                 if(hour == 9 && min < 5){
-                    // Código lista atrasados
+                    try {
+                        central.seleccionarOpcion(44);
+                    } catch (IOException ex) {
+                        Logger.getLogger(ListaAtrasadosTimer.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         };

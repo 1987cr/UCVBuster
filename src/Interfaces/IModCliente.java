@@ -18,6 +18,10 @@ public class IModCliente extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void disableCedula(){
+        cedulaField.setEnabled(false);
+    }
+    
     public String getCedula(){
         return cedulaField.getText();
     }
@@ -89,8 +93,7 @@ public class IModCliente extends javax.swing.JFrame {
             suscribirseCheckBox.setSelected(false);
         }
     }
-    
-    
+        
     
     /**
      * This method is called from within the constructor to initialize the form.
