@@ -19,6 +19,7 @@ import Interfaces.IDelVideo;
 import Interfaces.IDescripcionVideo;
 import Interfaces.IDisponibilidad;
 import Interfaces.IEmpleado;
+import Interfaces.IListaAtrasados;
 import Interfaces.IModCliente;
 import Interfaces.IRegAlquiler;
 import Interfaces.IRegCliente;
@@ -54,6 +55,7 @@ public class UCVBuster {
     private IDelCliente rolDelCliente;
     private IDescripcionVideo rolDescVideo;
     private IDisponibilidad rolDisponible;
+    private IListaAtrasados rolAtrasados;
     
     private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
@@ -364,11 +366,12 @@ public class UCVBuster {
                 
                 Iterator i = listaPeliculas.listIterator();
                 
+                
                 while(i.hasNext()){
                     pelicula = (VideoBean) i.next();
-                    catalogo.add(pelicula.getNombre());
+                    catalogo.add(pelicula.getNombre()); 
                 }
-                
+               
                 rolConsultarCatalogo.addPelicula(catalogo);
                 
                 break;
@@ -450,6 +453,32 @@ public class UCVBuster {
                 rolConsultarCatalogo.setEnabled(true);
                 rolConsultarCatalogo.setVisible(true);
                 break;
+                
+            case 44: // Lista de Atrasados
+                rolAtrasados = new IListaAtrasados();
+                rolAtrasados.setVisible(true);
+                rolAtrasados.setLocationRelativeTo(null);
+                rolAtrasados.setResizable(false);
+                
+                ArrayList atrasados = db.get_atrasados();
+                
+                Iterator it = atrasados.iterator();
+                
+                ClienteBean aux;
+                
+                while(it.hasNext()){
+                    aux = (ClienteBean) it.next();
+                    rolAtrasados.setRow(Integer.toString(aux.getId_cliente()), 
+                                        aux.getEmail(), 
+                                        aux.getEmail(),
+                                        aux.getTelefono());
+                }
+                
+                break;
+                
+            case 45: //Lista de Atrasados: Aceptar
+                rolAtrasados.dispose();
+                break;
         }        
          
      }
@@ -465,20 +494,8 @@ public class UCVBuster {
            }else{
                 acceso.setVisible(false);
                 seleccionarOpcion(35);
-           }//fin else
-       }//fin else
-    }//fin corroborar_clave
-
-/*
-    public void add_video(String id, String nombre, String clasificacion, String genero, String resumen) {
-         db.add_video(nombre,clasificacion,genero,resumen,1);
+           }
+       }
     }
 
-    public int obtenerSeqVideo() {
-       return db.obtenerSeqVideo();
-         
-    }
-*/
-    
-    
 }

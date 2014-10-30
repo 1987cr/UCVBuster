@@ -66,6 +66,11 @@ public class IAdmin extends javax.swing.JFrame {
         });
 
         jButton1_generar_atrasados.setText("Generar Lista de Atrasados");
+        jButton1_generar_atrasados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1_generar_atrasadosActionPerformed(evt);
+            }
+        });
 
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +173,14 @@ public class IAdmin extends javax.swing.JFrame {
             Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2_des_videoActionPerformed
+
+    private void jButton1_generar_atrasadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_generar_atrasadosActionPerformed
+         try {
+            central.seleccionarOpcion(44);
+        } catch (IOException ex) {
+            Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1_generar_atrasadosActionPerformed
 
     /**
      * @param args the command line arguments

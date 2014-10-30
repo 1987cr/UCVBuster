@@ -132,6 +132,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar Lista de Atrasados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1_generar_atrasadosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonSalir">
           <Properties>
