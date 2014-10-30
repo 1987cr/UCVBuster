@@ -92,7 +92,7 @@ public class Oracle implements DAO {
                  stmt.executeQuery(query);
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+          }catch( SQLException e ) { System.out.println("error en add_cliente "); System.out.println(e);}
     }
 
     @Override
@@ -127,7 +127,22 @@ public class Oracle implements DAO {
                  con.close();
           }catch( SQLException e ) { System.out.println("Error en add_alquiler "); System.out.println(e);}
     }
+    
+    public void upd_cliente(int cedula, String nombre, String direccion, int salario_mensual, String telefono, String protencial, String email, String suscripto){
+   
+        try ( Connection con = conectar();) {
+                 Statement stmt = con.createStatement();
+                 String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+"\n" +
+                         ",telefono = '"+telefono+"',potencial = '"+protencial+"',email = '"+email+"',suscrito = '"+suscripto+"' WHERE id_cliente="+cedula;
 
+                 System.out.println(query);
+                 stmt.executeQuery(query);
+                 stmt.close();
+                 con.close();
+          }catch( SQLException e ) { System.out.println("error en upd_cliente "); System.out.println(e);}
+        
+    }
+    
     @Override
     public void devolver_video(int video, int cliente) {
          try ( Connection con = conectar();) {
@@ -164,7 +179,7 @@ public class Oracle implements DAO {
           }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}
     }
     
-     public ArrayList<ClienteBean> get_atrasados(){
+    public ArrayList<ClienteBean> get_atrasados(){
        
           ArrayList lista = new ArrayList<ClienteBean>();
                   
@@ -239,8 +254,7 @@ public class Oracle implements DAO {
         
         return lista;
     }
-    
-    
+        
     public ClienteBean get_cliente(int id_cliente){    
          
         ClienteBean persona= new ClienteBean();

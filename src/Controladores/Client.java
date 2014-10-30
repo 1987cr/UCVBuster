@@ -72,6 +72,7 @@ public class Client {
           System.out.println(vid); 
        }
        
+       ora.upd_cliente(20911444, "rey patrones", "dir", 2700, "3152626", "si", "lwjirl", "si");
         UCVBuster b = UCVBuster.Instance();
         b.seleccionarOpcion(1);
         
