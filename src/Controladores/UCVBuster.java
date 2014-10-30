@@ -376,6 +376,8 @@ public class UCVBuster {
                     rolModCliente.setDireccion(c.getDireccion());
                     rolModCliente.setTelefono(c.getTelefono());
                     rolModCliente.setSalario(Integer.toString(c.getSalario_mensual()));
+                    rolModCliente.setPotencial(c.getPotencial());
+                    rolModCliente.setSuscribir(c.getSuscripto());
                 }              
                 
                 break;
@@ -456,17 +458,34 @@ public class UCVBuster {
                 break;
                 
             case 39: // Cancelar: Eliminar Cliente
-                rolDelCliente.setVisible(false);
+                rolDelCliente.dispose();
                 rolAdmin.setEnabled(true);
                 rolAdmin.setVisible(true);
                 break;
                 
             case 40: // Eliminar: Eliminar Cliente
+                db.del_cliente(Integer.parseInt(rolDelCliente.getCedula()));
                 
+                rolDelCliente.dispose();
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
                 break;
             
             case 41: // Buscar: Eliminar Cliente
+                ClienteBean cl = db.get_cliente(Integer.parseInt(rolDelCliente.getCedula()));
                 
+                if(cl.getId_cliente() == 0){
+                    JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                }else{
+                    rolDelCliente.enableEliminar();
+                    rolDelCliente.setNombre(cl.getNombre());
+                    rolDelCliente.setCorreo(cl.getEmail());
+                    rolDelCliente.setDireccion(cl.getDireccion());
+                    rolDelCliente.setTelefono(cl.getTelefono());
+                    rolDelCliente.setSalario(Integer.toString(cl.getSalario_mensual()));
+                    rolDelCliente.setPotencial(cl.getPotencial());
+                    rolDelCliente.setSuscribir(cl.getSuscripto());
+                }
                 break;
                 
             case 42: // Descripción Película: Aceptar

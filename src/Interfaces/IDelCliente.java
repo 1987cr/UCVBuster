@@ -15,6 +15,10 @@ public class IDelCliente extends javax.swing.JFrame {
         initComponents();
     }
     
+    public void enableEliminar(){
+        eliminarBtn.setEnabled(true);
+    }
+    
     public String getCedula(){
         return cedulaField.getText();
     }
