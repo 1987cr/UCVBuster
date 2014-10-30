@@ -1,6 +1,8 @@
 package Controladores;
 
 import Capa_Persistencia.Oracle;
+import DTO.ClienteBean;
+import DTO.VideoBean;
 import Decorator.BordeNegro;
 import Decorator.BordeRojo;
 import Decorator.ConcretePersonalizarVideo;
@@ -115,14 +117,21 @@ public class UCVBuster {
                 
             case 6: // Aceptar: Registrar Alquileres
                 
+                db.add_alquiler(null, null,Integer.parseInt(rolRegAlquiler.getId()), Integer.parseInt(rolRegAlquiler.getCedula()) );
+                rolRegAlquiler.setTitulo("");
+                rolRegAlquiler.setNombre("");
                 break;
                 
             case 7: // Buscar Cédula: Registrar Alquileres
                 
+                ClienteBean cli = db.get_cliente(Integer.parseInt(rolRegAlquiler.getCedula()));
+                rolRegAlquiler.setNombre(cli.getNombre());
                 break;
                 
             case 8: // Buscar ID: Registrar Alquileres
                 
+                VideoBean vid = db.get_video(Integer.parseInt(rolRegAlquiler.getId()));
+                rolRegAlquiler.setTitulo(vid.getNombre());
                 break;
                 
             case 9: // Registrar Devolución

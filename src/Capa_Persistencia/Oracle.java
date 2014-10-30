@@ -120,7 +120,7 @@ public class Oracle implements DAO {
                  
                /*  String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
                                                         clientes_id_cliente +")";*/
-                // System.out.println(query);
+                 System.out.println(query);
                  stmt.executeQuery(query);
                  
                  stmt.close();
@@ -132,10 +132,9 @@ public class Oracle implements DAO {
    
         try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
-                 String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+"\n" +
-                         ",telefono = '"+telefono+"',potencial = '"+protencial+"',email = '"+email+"',suscrito = '"+suscripto+"' WHERE id_cliente="+cedula;
+                 String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+ ",telefono = '"+telefono+"',potencial = '"+protencial+"',email = '"+email+"',suscrito = '"+suscripto+"' WHERE id_cliente="+cedula;
 
-                 System.out.println(query);
+                 //System.out.println(query);
                  stmt.executeQuery(query);
                  stmt.close();
                  con.close();
@@ -149,8 +148,8 @@ public class Oracle implements DAO {
              
              /*Obtener valores */
                  Statement stmt = con.createStatement();
-                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega\n" +
-                                "from alquileres\n" +
+                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega" +
+                                "from alquileres" +
                                 "where "+ video +" =video_id_video  and " +cliente +"= clientes_id_cliente";
                    ResultSet rset = stmt.executeQuery(query);
                    rset.next();
