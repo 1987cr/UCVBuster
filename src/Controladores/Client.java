@@ -45,7 +45,7 @@ public class Client {
         ClienteBean cli = ora.get_cliente(8888888);
         System.o
        ut.println(cli.getTelefono());
-        */
+        *//*
         ArrayList lista = new ArrayList<VideoBean>();
        lista= ora.get_catalago();
        Iterator i = lista.listIterator();
@@ -57,8 +57,20 @@ public class Client {
           System.out.println(vid.getNombre()); 
           vid = (VideoBean) i.next();
           System.out.println(vid.getNombre()); 
-       }
+       }*/
        
+         ArrayList lista = new ArrayList<String>();
+       lista= ora.get_suscritos();
+       Iterator i = lista.listIterator();
+       String vid= "";
+       if(!lista.isEmpty()){
+        vid =  (String) i.next();
+         System.out.println(vid); 
+         vid =  (String) i.next();
+          System.out.println(vid); 
+          vid =  (String) i.next();
+          System.out.println(vid); 
+       }
        
         UCVBuster b = UCVBuster.Instance();
         b.seleccionarOpcion(1);

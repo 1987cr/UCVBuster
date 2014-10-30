@@ -164,6 +164,29 @@ public class Oracle implements DAO {
           }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}
     }
     
+      public ArrayList<String> get_suscritos(){
+       
+          ArrayList lista = new ArrayList<String>();
+                  
+        try ( Connection con = conectar();){
+            Statement stmt = con.createStatement();
+            String query ="select * from suscripcion";
+            ResultSet rset =stmt.executeQuery(query);
+            
+            while (rset.next()){
+                String video= rset.getString(1);
+                //video.setId_video(rset.getInt(1));
+                
+                lista.add(video);
+             }
+           
+            stmt.close();
+            con.close();
+       }catch( SQLException e ) { System.out.println(" error en get_suscritos "); System.out.println(e);}
+        
+        return lista;
+    }
+    
     public ArrayList<VideoBean> get_catalago(){
        
           ArrayList lista = new ArrayList<VideoBean>();
@@ -186,7 +209,7 @@ public class Oracle implements DAO {
            
             stmt.close();
             con.close();
-       }catch( SQLException e ) { System.out.println(" error en get_alquiler "); System.out.println(e);}
+       }catch( SQLException e ) { System.out.println(" error en get_catalago "); System.out.println(e);}
         
         return lista;
     }
