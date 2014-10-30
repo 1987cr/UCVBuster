@@ -6,7 +6,9 @@ import DTO.AlquilerBean;
 
 import DTO.ClienteBean;
 import DTO.VideoBean;
+import Modelo.CarteleraTimer;
 
+import Modelo.Correo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -59,18 +61,16 @@ public class Client {
           System.out.println(vid.getNombre()); 
        }*/
        
-         ArrayList lista = new ArrayList<String>();
-       lista= ora.get_suscritos();
+       /*ArrayList lista = new ArrayList<String>();
+       lista = ora.get_suscritos();
        Iterator i = lista.listIterator();
        String vid= "";
-       if(!lista.isEmpty()){
-        vid =  (String) i.next();
-         System.out.println(vid); 
-         vid =  (String) i.next();
-          System.out.println(vid); 
-          vid =  (String) i.next();
-          System.out.println(vid); 
-       }
+       while(i.hasNext()){
+            vid =  (String) i.next();
+             System.out.println(vid); 
+       }*/
+        CarteleraTimer c = new CarteleraTimer();
+        c.test();
        
        ora.upd_cliente(20911444, "rey patrones", "dir", 2700, "3152626", "si", "lwjirl", "si");
         UCVBuster b = UCVBuster.Instance();
