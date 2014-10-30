@@ -35,6 +35,26 @@ public class Oracle implements DAO {
         }catch(  ClassNotFoundException | SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
         return con;
     }
+    
+    public int obtenerSeqVideo(){
+         int numero_seq = 0;
+        // System.out.println(numero_seq);
+        try ( Connection con = conectar();) {
+                 Statement stmt = con.createStatement();
+                // String query = "SELECT video_seq.CURRVAL FROM DUAL";
+                 String query =" select last_number from user_sequences where sequence_name = 'VIDEO_SEQ'";
+                 //stmt.executeQuery("exec del_cliente("+cedula+")");
+                   ResultSet rset = stmt.executeQuery(query);
+                   rset.next();
+                   
+                   numero_seq =rset.getInt(1);
+                   //System.out.println(rset.getInt(1));
+                   
+                 stmt.close();
+                 con.close();
+          }catch( SQLException e ) { System.out.println("error en obtenerSeqVideo "); System.out.println(e);}
+        return numero_seq;
+     }
 
     @Override
     public void del_cliente(int cedula) {
@@ -100,7 +120,7 @@ public class Oracle implements DAO {
                  
                /*  String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
                                                         clientes_id_cliente +")";*/
-                 System.out.println(query);
+                // System.out.println(query);
                  stmt.executeQuery(query);
                  
                  stmt.close();
@@ -123,7 +143,7 @@ public class Oracle implements DAO {
                    Date fecha_alquiler =rset.getDate(2);
                    Date fecha_planeada_entrega =rset.getDate(3);
                    
-                 System.out.println("fase1");
+              ///   System.out.println("fase1");
                 /* registar en Historico */   
                  query ="insert into historico_alquileres \n" +
                         "(id_alquiler, fecha_alquiler, fecha_planeada_devolucion, fecha_real_devolucion, video_id, cliente_id )\n" +
@@ -133,12 +153,12 @@ public class Oracle implements DAO {
                  
                  
                  
-                 System.out.println("fase2");
+              //   System.out.println("fase2");
                  /*Eliminar de alquiler */
                  query = "delete from alquileres where id_alquiler =" +id_alquiler;
                  stmt.executeQuery(query);
                  
-                 System.out.println("fase3");
+               //  System.out.println("fase3");
                  stmt.close();
                  con.close();
           }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}

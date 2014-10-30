@@ -50,6 +50,7 @@ public class ISelFoto extends javax.swing.JFrame {
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Personalizar Video");
 
         siguienteBtn.setText("Siguiente");
         siguienteBtn.setEnabled(false);

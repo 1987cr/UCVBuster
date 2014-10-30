@@ -5,6 +5,8 @@ import Controladores.UCVBuster;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class IRegVideo extends javax.swing.JFrame {
     
@@ -13,6 +15,28 @@ public class IRegVideo extends javax.swing.JFrame {
     public IRegVideo() {
         this.central = UCVBuster.Instance();
         initComponents();
+        setId(central.obtenerSeqVideo());
+        
+    }
+
+    public void setClasificacionField(String clasificacionField) {
+        this.clasificacionField.setText(clasificacionField);
+    }
+
+    public void setGeneroField(String generoField) {
+        this.generoField.setText(generoField) ;
+    }
+
+    public void setNombreField(String nombreField) {
+        this.nombreField.setText(nombreField) ;
+    }
+
+    public void setResumenArea(String resumenArea) {
+        this.resumenArea.setText(resumenArea) ;
+    }
+    
+    void setId(int id){
+        idField.setText(Integer.toString((id)));
     }
     
     String getId(){
@@ -56,6 +80,7 @@ public class IRegVideo extends javax.swing.JFrame {
         aceptarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registar Video");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Video"));
 
@@ -134,7 +159,7 @@ public class IRegVideo extends javax.swing.JFrame {
         });
 
         aceptarBtn.setText("Aceptar");
-        aceptarBtn.setEnabled(false);
+        aceptarBtn.setDoubleBuffered(true);
         aceptarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarBtnActionPerformed(evt);
@@ -173,7 +198,12 @@ public class IRegVideo extends javax.swing.JFrame {
 
     private void aceptarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarBtnActionPerformed
         
-        
+        central.add_video(getId(),getNombre(),getClasificacion(),getGenero(),getResumen());
+         setNombreField("");
+        setClasificacionField("");
+        setGeneroField("");       
+        setResumenArea("");
+        setId(central.obtenerSeqVideo());
         // se lleva a la base de datos
         
     }//GEN-LAST:event_aceptarBtnActionPerformed

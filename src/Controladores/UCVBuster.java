@@ -293,6 +293,16 @@ public class UCVBuster {
            }//fin else
        }//fin else
     }//fin corroborar_clave
-       
+
+    public void add_video(String id, String nombre, String clasificacion, String genero, String resumen) {
+         db.add_video(nombre,clasificacion,genero,resumen,1);
+    }
+
+    public int obtenerSeqVideo() {
+       return db.obtenerSeqVideo();
+         
+    }
+
+    
     
 }

@@ -43,6 +43,7 @@ public class IConsultar_alquileres extends javax.swing.JFrame {
         regresarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consultar Alquileres");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Cliente"));
 
