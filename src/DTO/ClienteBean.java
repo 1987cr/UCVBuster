@@ -18,7 +18,7 @@ public class ClienteBean implements DTO {
     private String nombre ;
     private String  direccion ; 
     private int  salario_mensual ;
-    private int telefono ; 
+    private String telefono ; 
     private String potencial;
     private String  email ;
     private String suscripto;
@@ -41,7 +41,7 @@ public class ClienteBean implements DTO {
         this.salario_mensual = salario_mensual;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -66,7 +66,7 @@ public class ClienteBean implements DTO {
         return salario_mensual;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
