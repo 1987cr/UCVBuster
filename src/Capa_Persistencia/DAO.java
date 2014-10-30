@@ -29,11 +29,11 @@ public interface DAO {
                int telefono, String protencial, String email, String suscripto);
        
      public abstract void add_video
-       (int id_video, String nombre, String clasificacion, String genero, 
+       ( String nombre, String clasificacion, String genero, 
                String resumen, int locales_id_local);
        
      public abstract void add_alquiler
-       (int id_alquiler, Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, 
+       ( Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, 
               int clientes_id_cliente);
        
     public abstract void devolver_video (int video, int cliente);

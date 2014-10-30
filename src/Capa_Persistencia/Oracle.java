@@ -40,20 +40,24 @@ public class Oracle implements DAO {
     public void del_cliente(int cedula) {
          try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
-                 stmt.executeQuery("exec del_cliente("+cedula+")");
+                 String query = "delete from clientes where id_cliente ="+cedula;
+                 //stmt.executeQuery("exec del_cliente("+cedula+")");
+                 stmt.executeQuery(query);
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+          }catch( SQLException e ) { System.out.println("Error en del_cliente "); System.out.println(e);}
     }
 
     @Override
     public void del_video(int id_video) {
         try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
-                 stmt.executeQuery("exec del_video("+id_video+")");
+                 String query = "delete from video where id_video ="+id_video;
+                // stmt.executeQuery("exec del_video("+id_video+")");
+                 stmt.executeQuery(query);
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+          }catch( SQLException e ) { System.out.println("Error en del_video "); System.out.println(e);}
     }
 
     @Override
@@ -64,7 +68,7 @@ public class Oracle implements DAO {
                          + cedula +",'"+  nombre +"','"+  direccion +"',"+ salario_mensual +"," 
                          + telefono +",'"+ protencial +"','"+ email +"','"+ suscripto+"')";
 
-                 System.out.println(query);
+              //   System.out.println(query);
                  stmt.executeQuery(query);
                  stmt.close();
                  con.close();
@@ -72,25 +76,30 @@ public class Oracle implements DAO {
     }
 
     @Override
-    public void add_video(int id_video, String nombre, String clasificacion, String genero, String resumen, int locales_id_local) {
+    public void add_video( String nombre, String clasificacion, String genero, String resumen, int locales_id_local) {
          try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
-                 stmt.executeQuery("exec add_video("+ id_video +","+  nombre +","+  clasificacion +","+ genero +","+ 
-                                                        resumen +","+ locales_id_local +")");
+                 String query = "INSERT INTO video (   id_video,  nombre,         clasificacion,        genero,      resumen,     locales_id_local) VALUES("
+                                                        +" video_seq.NEXTVAL ,'"+  nombre +"','"+  clasificacion +"','"+ genero +"','"+ resumen +"',"+ locales_id_local +")";
+                /* stmt.executeQuery("exec add_video("+ id_video +","+  nombre +","+  clasificacion +","+ genero +","+ 
+                                                        resumen +","+ locales_id_local +")");*/
+               // System.out.println(query);
+                 stmt.executeQuery(query);
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+          }catch( SQLException e ) { System.out.println("Error en add_video"); System.out.println(e);}
     }
 
     @Override
-    public void add_alquiler(int id_alquiler, Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, int clientes_id_cliente) {
+    public void add_alquiler( Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, int clientes_id_cliente) {
        try ( Connection con = conectar();) {
            
-           
-           
                  Statement stmt = con.createStatement();
-                 String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
-                                                        clientes_id_cliente +")";
+                 String query = "INSERT INTO alquileres ( id_alquiler,       fecha_alquiler,        fecha_planeada_entrega,      video_id_video,    clientes_id_cliente) VALUES("
+                                                        +" alquileres_seq.NEXTVAL ,"+  fecha_alquiler +","+ fecha_planeada_entrega +","+ video_id_video +","+ clientes_id_cliente +")";
+                 
+               /*  String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
+                                                        clientes_id_cliente +")";*/
                  System.out.println(query);
                  stmt.executeQuery(query);
                  
@@ -102,11 +111,37 @@ public class Oracle implements DAO {
     @Override
     public void devolver_video(int video, int cliente) {
          try ( Connection con = conectar();) {
+             
+             /*Obtener valores */
                  Statement stmt = con.createStatement();
-                 stmt.executeQuery("exec devolver_video("+ video +","+  cliente +")");
+                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega\n" +
+                                "from alquileres\n" +
+                                "where "+ video +" =video_id_video  and " +cliente +"= clientes_id_cliente";
+                   ResultSet rset = stmt.executeQuery(query);
+                   rset.next();
+                   int id_alquiler =rset.getInt(1);
+                   Date fecha_alquiler =rset.getDate(2);
+                   Date fecha_planeada_entrega =rset.getDate(3);
+                   
+                 System.out.println("fase1");
+                /* registar en Historico */   
+                 query ="insert into historico_alquileres \n" +
+                        "(id_alquiler, fecha_alquiler, fecha_planeada_devolucion, fecha_real_devolucion, video_id, cliente_id )\n" +
+                        "values \n" +
+                        "("+ id_alquiler +","+ fecha_alquiler +","+ fecha_planeada_entrega +","+ null +","+ video +","+ cliente +")";
+                 stmt.executeQuery(query);
+                 
+                 
+                 
+                 System.out.println("fase2");
+                 /*Eliminar de alquiler */
+                 query = "delete from alquileres where id_alquiler =" +id_alquiler;
+                 stmt.executeQuery(query);
+                 
+                 System.out.println("fase3");
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Empezo54 "); System.out.println(e);}
+          }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}
     }
     
     public ClienteBean get_cliente(int id_cliente){    
@@ -171,7 +206,7 @@ public class Oracle implements DAO {
                   
         try ( Connection con = conectar();){
             Statement stmt = con.createStatement();
-            String query ="select * from alquiler where clientes_id_cliente ="+id_cliente;
+            String query ="select * from alquileres where clientes_id_cliente ="+id_cliente;
             ResultSet rset =stmt.executeQuery(query);
             
             while (rset.next()){
