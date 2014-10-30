@@ -74,6 +74,11 @@ public class IRegAlquiler extends javax.swing.JFrame {
         });
 
         nombreField.setEditable(false);
+        nombreField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                nombreFieldCaretUpdate(evt);
+            }
+        });
 
         jLabel2.setText("Nombre:");
 
@@ -116,6 +121,11 @@ public class IRegAlquiler extends javax.swing.JFrame {
         jLabel5.setText("Título:");
 
         tituloField.setEditable(false);
+        tituloField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tituloFieldCaretUpdate(evt);
+            }
+        });
 
         buscarIdBtn.setText("Buscar");
         buscarIdBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -243,6 +253,16 @@ public class IRegAlquiler extends javax.swing.JFrame {
             Logger.getLogger(IRegAlquiler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarBtnActionPerformed
+
+    private void tituloFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tituloFieldCaretUpdate
+         if(!cedulaField.getText().equals("") && !idField.getText().equals("") )
+            aceptarBtn.setEnabled(true);
+    }//GEN-LAST:event_tituloFieldCaretUpdate
+
+    private void nombreFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_nombreFieldCaretUpdate
+        if(!cedulaField.getText().equals("") && !idField.getText().equals("") )
+            aceptarBtn.setEnabled(true);
+    }//GEN-LAST:event_nombreFieldCaretUpdate
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

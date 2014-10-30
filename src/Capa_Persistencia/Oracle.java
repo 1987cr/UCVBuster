@@ -120,7 +120,7 @@ public class Oracle implements DAO {
                  
                /*  String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
                                                         clientes_id_cliente +")";*/
-                // System.out.println(query);
+                 System.out.println(query);
                  stmt.executeQuery(query);
                  
                  stmt.close();
@@ -132,10 +132,14 @@ public class Oracle implements DAO {
    
         try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
+<<<<<<< HEAD
                  String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+
                          ",telefono = '"+telefono+"',potencial = '"+protencial+"',email = '"+email+"',suscrito = '"+suscripto+"' WHERE id_cliente="+cedula;
+=======
+                 String query = "UPDATE clientes SET nombre = '" +nombre+"',direccion = '"+direccion+"',salario_mensual = "+salario_mensual+ ",telefono = '"+telefono+"',potencial = '"+protencial+"',email = '"+email+"',suscrito = '"+suscripto+"' WHERE id_cliente="+cedula;
+>>>>>>> e52c9971e2b72564a9ca49925fc28db44ac92916
 
-                 System.out.println(query);
+                 //System.out.println(query);
                  stmt.executeQuery(query);
                  stmt.close();
                  con.close();
