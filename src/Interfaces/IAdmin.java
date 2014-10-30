@@ -130,11 +130,19 @@ public class IAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2_desincorporar_videoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_desincorporar_videoActionPerformed
-        // TODO add your handling code here:
+        try {
+            central.seleccionarOpcion(28);
+        } catch (IOException ex) {
+            Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2_desincorporar_videoActionPerformed
 
     private void jButton1_Incorporar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_Incorporar_ClienteActionPerformed
-        // TODO add your handling code here:
+        try {
+            central.seleccionarOpcion(31);
+        } catch (IOException ex) {
+            Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1_Incorporar_ClienteActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -154,7 +162,11 @@ public class IAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1_Incorporar_videoActionPerformed
 
     private void jButton2_des_videoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_des_videoActionPerformed
-        // TODO add your handling code here:
+        try {
+            central.seleccionarOpcion(38);
+        } catch (IOException ex) {
+            Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2_des_videoActionPerformed
 
     /**

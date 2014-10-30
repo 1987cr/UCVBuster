@@ -1,6 +1,9 @@
 package Interfaces;
 
 import Controladores.UCVBuster;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class IConsultarCatalogo extends javax.swing.JFrame {
     
@@ -30,8 +33,18 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jList1);
 
         jButton1.setText("Ver Detalles");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Consultar Disponibilidad");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Catálogo de películas:");
 
@@ -67,6 +80,11 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
         );
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,6 +111,30 @@ public class IConsultarCatalogo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            central.seleccionarOpcion(36);
+        } catch (IOException ex) {
+            Logger.getLogger(IConsultarCatalogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            central.seleccionarOpcion(37);
+        } catch (IOException ex) {
+            Logger.getLogger(IConsultarCatalogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            central.seleccionarOpcion(20);
+        } catch (IOException ex) {
+            Logger.getLogger(IConsultarCatalogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

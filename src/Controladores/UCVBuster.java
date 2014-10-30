@@ -22,6 +22,8 @@ import Interfaces.ISelFoto;
 import Interfaces.ISelOpciones;
 import Interfaces.IDelVideo;
 import Interfaces.IModCliente;
+import Interfaces.IConsultarCatalogo;
+import Interfaces.IDelCliente;
 import Modelo.CarteleraTimer;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.ProcesarVideo;
@@ -43,6 +45,8 @@ public class UCVBuster {
     private IRegVideo rolRegVideo;
     private IDelVideo rolDelVideo;
     private IModCliente rolModCliente;
+    private IConsultarCatalogo rolConsultarCatalogo;
+    private IDelCliente rolDelCliente;
     
     private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
@@ -208,12 +212,15 @@ public class UCVBuster {
                 rolRegAlquiler.setVisible(true);
                 break;
             
-            case 20: // Salir: Empleado, Administrador
+            case 20: // Salir: Empleado, Administrador, Cliente
                 if(rolAdmin != null)
                     rolAdmin.setVisible(false);
                 
                 if(rolEmpleado != null)
                     rolEmpleado.setVisible(false);
+                
+                if(rolConsultarCatalogo != null)
+                    rolConsultarCatalogo.setVisible(false);
                 
                 acceso.setLocationRelativeTo(null);
                 acceso.setVisible(true);
@@ -334,6 +341,43 @@ public class UCVBuster {
             case 34: // Buscar: Modificar Cliente
                 // se busca la ci en la bd y luego se coloca en gris
                 break;
+                
+            case 35: // Consultar Catalogo
+                rolConsultarCatalogo = new IConsultarCatalogo();
+                rolConsultarCatalogo.setLocationRelativeTo(null);
+                rolConsultarCatalogo.setVisible(true);
+                rolConsultarCatalogo.setResizable(false);
+                break;
+                
+            case 36: // Ver Detalles: Consultar Catalogo
+                
+                break;
+            
+            case 37: // Consultar Disponibilidad: Consultar Catalogo
+                
+                break;
+                
+            case 38: // Eliminar Cliente
+                rolDelCliente = new IDelCliente();
+                rolDelCliente.setLocationRelativeTo(null);
+                rolDelCliente.setVisible(true);
+                rolDelCliente.setResizable(false);
+                rolAdmin.setEnabled(false);
+                break;
+                
+            case 39: // Cancelar: Eliminar Cliente
+                rolDelCliente.setVisible(false);
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
+                break;
+                
+            case 40: // Eliminar: Eliminar Cliente
+                
+                break;
+            
+            case 41: // Buscar: Eliminar Cliente
+                
+                break;
         }        
          
      }
@@ -347,7 +391,8 @@ public class UCVBuster {
                 acceso.setVisible(false);
                 seleccionarOpcion(3);
            }else{
-                System.out.println("caiste!!! ");
+                acceso.setVisible(false);
+                seleccionarOpcion(35);
            }//fin else
        }//fin else
     }//fin corroborar_clave

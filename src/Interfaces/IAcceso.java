@@ -64,6 +64,11 @@ public class IAcceso extends javax.swing.JFrame {
                 usuarioItemStateChanged(evt);
             }
         });
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Usuario:");
 
@@ -143,8 +148,8 @@ public class IAcceso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1_accionActionPerformed
 
     private void usuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_usuarioItemStateChanged
-        if(getUsuario() == 2)
-            System.out.println("YUP");
+//        if(getUsuario() == 2)
+ //          System.out.println("YUP");
     }//GEN-LAST:event_usuarioItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -154,6 +159,10 @@ public class IAcceso extends javax.swing.JFrame {
             Logger.getLogger(IAcceso.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioActionPerformed
 
     /**
      * @param args the command line arguments

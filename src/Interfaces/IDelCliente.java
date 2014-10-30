@@ -6,52 +6,17 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class IModCliente extends javax.swing.JFrame {
+public class IDelCliente extends javax.swing.JFrame {
 
-    // se llena el id y se busca, de alli se hace un set en los campos, se modifican 
-    // y luego se hace un get de los datos para el posterior update
-    
     private final UCVBuster central;
     
-    public IModCliente() {
+    public IDelCliente() {
         this.central = UCVBuster.Instance();
         initComponents();
     }
-
+    
     public String getCedula(){
         return cedulaField.getText();
-    }
-    
-    public String getNombre(){
-        return nombreField.getText();
-    }
-    
-    public String getDireccion(){
-        return direccionArea.getText();
-    }
-    
-    public String getTelefono(){
-        return telefonoField.getText();
-    }
-    
-    public String getCorreo(){
-        return correoField.getText();
-    }
-    
-    public String getSalario(){
-        return salarioField.getText();
-    }
-    
-    public String getPotencial(){
-        if(potencialCheckBox.isSelected())
-            return "si";
-        return "no";
-    }
-    
-    public String getSuscribirse(){
-        if(suscribirseCheckBox.isSelected())
-            return "si";
-        return "no";           
     }
     
     public void setNombre(String nombre){
@@ -89,9 +54,7 @@ public class IModCliente extends javax.swing.JFrame {
             suscribirseCheckBox.setSelected(false);
         }
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,7 +67,6 @@ public class IModCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cedulaField = new javax.swing.JTextField();
-        buscarBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nombreField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -113,19 +75,54 @@ public class IModCliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         telefonoField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        correoField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        correoField = new javax.swing.JTextField();
         salarioField = new javax.swing.JTextField();
         potencialCheckBox = new javax.swing.JCheckBox();
         suscribirseCheckBox = new javax.swing.JCheckBox();
+        buscarBtn = new javax.swing.JButton();
         cancelarBtn = new javax.swing.JButton();
-        modificarBtn = new javax.swing.JButton();
+        eliminarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos Cliente"));
 
         jLabel1.setText("Cédula:");
+
+        jLabel2.setText("Nombre:");
+
+        nombreField.setEnabled(false);
+
+        jLabel3.setText("Dirección:");
+
+        direccionArea.setColumns(20);
+        direccionArea.setRows(5);
+        direccionArea.setEnabled(false);
+        jScrollPane1.setViewportView(direccionArea);
+
+        jLabel4.setText("Teléfono:");
+
+        telefonoField.setEnabled(false);
+
+        jLabel5.setText("Correo:");
+
+        jLabel6.setText("Salario:");
+
+        correoField.setEnabled(false);
+
+        salarioField.setEnabled(false);
+
+        potencialCheckBox.setText("Potencial");
+        potencialCheckBox.setEnabled(false);
+        potencialCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                potencialCheckBoxActionPerformed(evt);
+            }
+        });
+
+        suscribirseCheckBox.setText("Suscribirse");
+        suscribirseCheckBox.setEnabled(false);
 
         buscarBtn.setText("Buscar");
         buscarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -134,30 +131,12 @@ public class IModCliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Nombre:");
-
-        jLabel3.setText("Dirección:");
-
-        direccionArea.setColumns(20);
-        direccionArea.setRows(5);
-        jScrollPane1.setViewportView(direccionArea);
-
-        jLabel4.setText("Teléfono:");
-
-        jLabel5.setText("Correo:");
-
-        jLabel6.setText("Salario:");
-
-        potencialCheckBox.setText("Potencial");
-
-        suscribirseCheckBox.setText("Suscribirse");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -165,21 +144,19 @@ public class IModCliente extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2))
-                                .addGap(24, 24, 24)
+                                .addGap(23, 23, 23)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cedulaField)
                                     .addComponent(nombreField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                                     .addComponent(telefonoField)
                                     .addComponent(correoField)
                                     .addComponent(salarioField))))
@@ -188,8 +165,7 @@ public class IModCliente extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(potencialCheckBox)
                         .addGap(18, 18, 18)
-                        .addComponent(suscribirseCheckBox)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(suscribirseCheckBox))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,11 +182,11 @@ public class IModCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefonoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -233,10 +209,11 @@ public class IModCliente extends javax.swing.JFrame {
             }
         });
 
-        modificarBtn.setText("Modificar");
-        modificarBtn.addActionListener(new java.awt.event.ActionListener() {
+        eliminarBtn.setText("Eliminar");
+        eliminarBtn.setEnabled(false);
+        eliminarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarBtnActionPerformed(evt);
+                eliminarBtnActionPerformed(evt);
             }
         });
 
@@ -247,13 +224,13 @@ public class IModCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(modificarBtn)
+                .addComponent(eliminarBtn)
                 .addGap(18, 18, 18)
                 .addComponent(cancelarBtn)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,36 +240,40 @@ public class IModCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelarBtn)
-                    .addComponent(modificarBtn))
+                    .addComponent(eliminarBtn))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
-        try {
-            central.seleccionarOpcion(34);
-        } catch (IOException ex) {
-            Logger.getLogger(IModCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_buscarBtnActionPerformed
-
-    private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
-        try {
-            central.seleccionarOpcion(33);
-        } catch (IOException ex) {
-            Logger.getLogger(IModCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_modificarBtnActionPerformed
+    private void potencialCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potencialCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_potencialCheckBoxActionPerformed
 
     private void cancelarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarBtnActionPerformed
         try {
-            central.seleccionarOpcion(32);
+            central.seleccionarOpcion(39);
         } catch (IOException ex) {
-            Logger.getLogger(IModCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IDelCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cancelarBtnActionPerformed
+
+    private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
+        try {
+            central.seleccionarOpcion(40);
+        } catch (IOException ex) {
+            Logger.getLogger(IDelCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_eliminarBtnActionPerformed
+
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
+        try {
+            central.seleccionarOpcion(41);
+        } catch (IOException ex) {
+            Logger.getLogger(IDelCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buscarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,20 +292,20 @@ public class IModCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IModCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IModCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IModCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IModCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(IDelCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IModCliente().setVisible(true);
+                new IDelCliente().setVisible(true);
             }
         });
     }
@@ -335,6 +316,7 @@ public class IModCliente extends javax.swing.JFrame {
     private javax.swing.JTextField cedulaField;
     private javax.swing.JTextField correoField;
     private javax.swing.JTextArea direccionArea;
+    private javax.swing.JButton eliminarBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -343,7 +325,6 @@ public class IModCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modificarBtn;
     private javax.swing.JTextField nombreField;
     private javax.swing.JCheckBox potencialCheckBox;
     private javax.swing.JTextField salarioField;
