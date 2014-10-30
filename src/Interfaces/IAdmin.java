@@ -51,14 +51,19 @@ public class IAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton1_Incorporar_Cliente.setText("Incorporar Cliente");
+        jButton1_Incorporar_Cliente.setText("Modificar Cliente");
         jButton1_Incorporar_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1_Incorporar_ClienteActionPerformed(evt);
             }
         });
 
-        jButton2_des_video.setText("Desincorporar Video ");
+        jButton2_des_video.setText("Desincorporar Cliente ");
+        jButton2_des_video.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2_des_videoActionPerformed(evt);
+            }
+        });
 
         jButton1_generar_atrasados.setText("Generar Lista de Atrasados");
 
@@ -147,6 +152,10 @@ public class IAdmin extends javax.swing.JFrame {
             Logger.getLogger(IAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1_Incorporar_videoActionPerformed
+
+    private void jButton2_des_videoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_des_videoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2_des_videoActionPerformed
 
     /**
      * @param args the command line arguments

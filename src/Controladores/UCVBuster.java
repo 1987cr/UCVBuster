@@ -18,6 +18,8 @@ import Interfaces.IRegDevolucion;
 import Interfaces.IRegVideo;
 import Interfaces.ISelFoto;
 import Interfaces.ISelOpciones;
+import Interfaces.IDelVideo;
+import Interfaces.IModCliente;
 import Modelo.CarteleraTimer;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.ProcesarVideo;
@@ -37,6 +39,8 @@ public class UCVBuster {
     private ISelFoto rolSelFoto;
     private ISelOpciones rolSelOpciones;
     private IRegVideo rolRegVideo;
+    private IDelVideo rolDelVideo;
+    private IModCliente rolModCliente;
     
     private ConcretePersonalizarVideo base; 
     private ListaAtrasadosTimer laTimer;
@@ -277,6 +281,49 @@ public class UCVBuster {
                 db.add_video(Integer.parseInt(rolRegVideo.getId()),rolRegVideo.getNombre(),
                         rolRegVideo.getClasificacion(),rolRegVideo.getGenero(),
                         rolRegVideo.getResumen(),1);
+                rolRegVideo.setVisible(false);
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
+                break;
+                
+            case 28: // Eliminar Video
+                rolDelVideo = new IDelVideo();
+                rolDelVideo.setLocationRelativeTo(null);
+                rolDelVideo.setVisible(true);
+                rolDelVideo.setResizable(false);
+                rolAdmin.setEnabled(false);
+                break;
+                
+            case 29: // Cancelar: Eliminar Video
+                rolDelVideo.setVisible(false);
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
+                break;
+                
+            case 30: // Eliminar: Eliminar Video
+                
+                break;
+                
+            case 31: // Modificar Cliente
+                rolModCliente = new IModCliente();
+                rolModCliente.setLocationRelativeTo(null);
+                rolModCliente.setVisible(true);
+                rolModCliente.setResizable(false);
+                rolAdmin.setEnabled(false);
+                break;
+                
+            case 32: // Cancelar: Modificar Cliente
+                rolModCliente.setVisible(false);
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);
+                break;
+                
+            case 33: // Modificar: Modificar Cliente
+                
+                break;
+            
+            case 34: // Buscar: Modificar Cliente
+                // se busca la ci en la bd y luego se coloca en gris
                 break;
         }        
          
