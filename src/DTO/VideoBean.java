@@ -18,8 +18,19 @@ public class VideoBean  implements DTO {
     private String  genero ;
     private String resumen;
     private int locales_id_local;
-    
+      private int cantidad_existencias;
+      
     public VideoBean(){}
+        
+    public int getCantidad_existencias(){
+         return this.cantidad_existencias;
+    }
+    
+     
+    public void setCantidad_existencias(int var ){
+          this.cantidad_existencias = var;
+    }
+    
     
     public void setId_video(int id_video) {
         this.id_video = id_video;

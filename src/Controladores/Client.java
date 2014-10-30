@@ -5,17 +5,19 @@ import Capa_Persistencia.Oracle;
 import DTO.AlquilerBean;
 
 import DTO.ClienteBean;
+import DTO.VideoBean;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Client {
 
     public static void main(String[] args) throws IOException{
         
         
-       /* Oracle ora= new Oracle();
-        ClienteBean perso = new ClienteBean();
+        Oracle ora= new Oracle();
+      /*  ClienteBean perso = new ClienteBean();
         perso = ora.get_cliente(20911444);
       //  System.out.println(perso.getNombre());
         
@@ -38,7 +40,26 @@ public class Client {
         
         lista=ora.get_alquiler(20911444);
       //  System.out.println(lista.isEmpty());
+        
+        ora.add_cliente(8888888, null, null, 222, "04141422", "si", null, "i");
+        ClienteBean cli = ora.get_cliente(8888888);
+        System.o
+       ut.println(cli.getTelefono());
         */
+        ArrayList lista = new ArrayList<VideoBean>();
+       lista= ora.get_catalago();
+       Iterator i = lista.listIterator();
+       VideoBean vid= new VideoBean();
+       if(!lista.isEmpty()){
+        vid = (VideoBean) i.next();
+         System.out.println(vid.getNombre()); 
+         vid = (VideoBean) i.next();
+          System.out.println(vid.getNombre()); 
+          vid = (VideoBean) i.next();
+          System.out.println(vid.getNombre()); 
+       }
+       
+       
         UCVBuster b = UCVBuster.Instance();
         b.seleccionarOpcion(1);
         

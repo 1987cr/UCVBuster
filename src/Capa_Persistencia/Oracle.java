@@ -81,7 +81,7 @@ public class Oracle implements DAO {
     }
 
     @Override
-    public void add_cliente(int cedula, String nombre, String direccion, int salario_mensual, int telefono, String protencial, String email, String suscripto) {
+    public void add_cliente(int cedula, String nombre, String direccion, int salario_mensual, String telefono, String protencial, String email, String suscripto) {
         try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
                  String query = "INSERT INTO clientes (id_cliente,nombre,direccion,salario_mensual,telefono,potencial,email,suscrito) VALUES("
@@ -100,10 +100,10 @@ public class Oracle implements DAO {
          try ( Connection con = conectar();) {
                  Statement stmt = con.createStatement();
                  String query = "INSERT INTO video (   id_video,  nombre,         clasificacion,        genero,      resumen,     locales_id_local) VALUES("
-                                                        +" video_seq.NEXTVAL ,'"+  nombre +"','"+  nombre +"','"+  clasificacion +"','"+ genero +"','"+ resumen +"',"+ locales_id_local +")";
+                                                        +id_video+" ,'"+  nombre +"','"+  clasificacion +"','"+ genero +"','"+ resumen +"',"+ locales_id_local +")";
                 /* stmt.executeQuery("exec add_video("+ id_video +","+  nombre +","+  clasificacion +","+ genero +","+ 
                                                         resumen +","+ locales_id_local +")");*/
-               // System.out.println(query);
+                System.out.println(query);
                  stmt.executeQuery(query);
                  stmt.close();
                  con.close();
@@ -163,6 +163,34 @@ public class Oracle implements DAO {
                  con.close();
           }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}
     }
+    
+    public ArrayList<VideoBean> get_catalago(){
+       
+          ArrayList lista = new ArrayList<VideoBean>();
+                  
+        try ( Connection con = conectar();){
+            Statement stmt = con.createStatement();
+            String query ="select * from catalogo";
+            ResultSet rset =stmt.executeQuery(query);
+            
+            while (rset.next()){
+                VideoBean video= new VideoBean();
+                //video.setId_video(rset.getInt(1));
+                video.setNombre(rset.getString(1));
+                video.setClasificacion(rset.getString(2));
+                video.setGenero(rset.getString(3));
+                video.setResumen(rset.getString(4)); 
+                video.setCantidad_existencias(rset.getInt(5)); 
+                lista.add(video);
+             }
+           
+            stmt.close();
+            con.close();
+       }catch( SQLException e ) { System.out.println(" error en get_alquiler "); System.out.println(e);}
+        
+        return lista;
+    }
+    
     
     public ClienteBean get_cliente(int id_cliente){    
          

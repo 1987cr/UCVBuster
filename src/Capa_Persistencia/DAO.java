@@ -26,7 +26,7 @@ public interface DAO {
      
      public abstract void add_cliente
        (int cedula, String nombre, String direccion, int salario_mensual, 
-               int telefono, String protencial, String email, String suscripto);
+               String telefono, String protencial, String email, String suscripto);
        
      public abstract void add_video
        ( int id_video, String nombre, String clasificacion, String genero, 
