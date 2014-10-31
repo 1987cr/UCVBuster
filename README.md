@@ -1,3 +1,8 @@
+* Carlos Riera
+* Israel Rodríguez
+* Anthony Herrera
+
+
 UCVBuster
 =========
 
