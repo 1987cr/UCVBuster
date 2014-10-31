@@ -332,7 +332,10 @@ public class UCVBuster {
                 break;
                 
             case 30: // Eliminar: Eliminar Video
-                
+                db.del_video(Integer.parseInt(rolDelVideo.getId()));
+                rolDelVideo.dispose();
+                rolAdmin.setEnabled(true);
+                rolAdmin.setVisible(true);                
                 break;
                 
             case 31: // Modificar Cliente
@@ -524,6 +527,21 @@ public class UCVBuster {
                 
             case 45: //Lista de Atrasados: Aceptar
                 rolAtrasados.dispose();
+                break;
+                
+            case 46:
+                VideoBean auxVideo = db.get_video(Integer.parseInt(rolDelVideo.getId()));
+                
+                if(auxVideo.getId_video() == 0){
+                    JOptionPane.showMessageDialog(null, "Video no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                }else{
+                    rolDelVideo.enableEliminar();
+                    rolDelVideo.setNombre(auxVideo.getNombre());
+                    rolDelVideo.setClasificacion(auxVideo.getClasificacion());
+                    rolDelVideo.setGenero(auxVideo.getGenero());
+                    rolDelVideo.setResumen(auxVideo.getResumen());
+                }
+                
                 break;
         }        
          
