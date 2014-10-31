@@ -183,19 +183,15 @@ public class UCVBuster {
                 break;
                 
             case 11: // Aceptar: Registrar Devolución
-                db.devolver_video(Integer.parseInt(rolRegDevolucion.getId()), Integer.parseInt(rolRegDevolucion.getCedula()));
-                rolRegDevolucion.setTitulo("");
-                rolRegDevolucion.setNombre("");
+                
                 break;
                 
             case 12: // Buscar Cédula: Registrar Devolución
-                ClienteBean cli1 = db.get_cliente(Integer.parseInt(rolRegDevolucion.getCedula()));
-                rolRegDevolucion.setNombre(cli1.getNombre());
+                
                 break;
                 
             case 13: // Buscar ID: Registrar Devolución
-                VideoBean vid2 = db.get_video(Integer.parseInt(rolRegDevolucion.getId()));
-                rolRegDevolucion.setTitulo(vid2.getNombre());
+                
                 break;
                 
             case 14: // Consultar Alquileres

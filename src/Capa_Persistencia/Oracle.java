@@ -16,13 +16,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -154,64 +150,35 @@ public class Oracle implements DAO {
          try ( Connection con = conectar();) {
              
              /*Obtener valores */
-                System.out.println("fase0");
                  Statement stmt = con.createStatement();
-                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega from alquileres " +
-                                "where video_id_video= "+ video +"  and clientes_id_cliente = " +cliente ;
+                 String query = "select id_alquiler,fecha_alquiler,fecha_planeada_entrega" +
+                                "from alquileres" +
+                                "where "+ video +" =video_id_video  and " +cliente +"= clientes_id_cliente";
                    ResultSet rset = stmt.executeQuery(query);
-                 //  System.out.println(query);
-                   while(rset.next()){
+                   rset.next();
+                   int id_alquiler =rset.getInt(1);
+                   Date fecha_alquiler =rset.getDate(2);
+                   Date fecha_planeada_entrega =rset.getDate(3);
                    
-                        System.out.println(rset.getInt(1));
-                        System.out.println(rset.getString(2));
-                        System.out.println(rset.getString(3));
-                        int id_alquiler =rset.getInt(1);
-                        String fecha_alquiler =rset.getString(2);
-                        String fecha_planeada_entrega =rset.getString(3);
-                   
-                 System.out.println("fase1");
+              ///   System.out.println("fase1");
                 /* registar en Historico */   
-                 
-                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-                 Calendar c1 = Calendar.getInstance();
-                 c1.setTime(new Date()); // Now use today date.
-                 String ini = sdf.format(c1.getTime());
-              
-                  
-                  String date_s = fecha_alquiler; 
-                    SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss"); 
-                    Date date = dt.parse(date_s); 
-                    SimpleDateFormat dt1 = new SimpleDateFormat("dd-MMM-yyyy");
-                fecha_alquiler=dt1.format(date);
-                
-                String date_s2 = fecha_planeada_entrega; 
-                    SimpleDateFormat dt2 = new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss"); 
-                    Date date2 = dt2.parse(date_s2); 
-                    SimpleDateFormat dt3 = new SimpleDateFormat("dd-MMM-yyyy");
-               fecha_planeada_entrega= dt3.format(date2);
-                 
                  query ="insert into historico_alquileres" +
                         "(id_alquiler, fecha_alquiler, fecha_planeada_devolucion, fecha_real_devolucion, video_id, cliente_id )" +
                         "values" +
-                        "("+ id_alquiler +",'"+ fecha_alquiler +"','"+ fecha_planeada_entrega +"','"+ ini +"',"+ video +","+ cliente +")";
-                      
-                        System.out.println(query);
-                       stmt.executeQuery(query);
-                 
-                 
-                 System.out.println("fase2");
-                 /*Eliminar de alquiler */
-                 query = "delete from alquileres where id_alquiler =" +id_alquiler;
-                 System.out.println(query);
+                        "("+ id_alquiler +","+ fecha_alquiler +","+ fecha_planeada_entrega +","+ null +","+ video +","+ cliente +")";
                  stmt.executeQuery(query);
                  
-                 System.out.println("fase3");
-                 }
+                 
+                 
+              //   System.out.println("fase2");
+                 /*Eliminar de alquiler */
+                 query = "delete from alquileres where id_alquiler =" +id_alquiler;
+                 stmt.executeQuery(query);
+                 
+               //  System.out.println("fase3");
                  stmt.close();
                  con.close();
-          }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);} catch (ParseException ex) {
-            Logger.getLogger(Oracle.class.getName()).log(Level.SEVERE, null, ex);
-        }
+          }catch( SQLException e ) { System.out.println("Error en devolver_video "); System.out.println(e);}
     }
     
     public ArrayList<ClienteBean> get_atrasados(){
