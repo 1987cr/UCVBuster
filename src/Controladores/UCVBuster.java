@@ -32,7 +32,11 @@ import Modelo.CarteleraTimer;
 import Modelo.ListaAtrasadosTimer;
 import Modelo.ProcesarVideo;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -137,8 +141,17 @@ public class UCVBuster {
                 break;
                 
             case 6: // Aceptar: Registrar Alquileres
-                
-                db.add_alquiler(null, null,Integer.parseInt(rolRegAlquiler.getId()), Integer.parseInt(rolRegAlquiler.getCedula()) );
+                                
+                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+                 Calendar c1 = Calendar.getInstance();
+                 Calendar c2 = Calendar.getInstance();
+                 c1.setTime(new Date()); // Now use today date.
+                 String ini = sdf.format(c1.getTime());
+                 c2.setTime(new Date());
+                 c2.add(Calendar.DATE, 3); // Adding 5 days
+                 String fin = sdf.format(c2.getTime());
+                              
+                db.add_alquiler(ini,fin ,Integer.parseInt(rolRegAlquiler.getId()), Integer.parseInt(rolRegAlquiler.getCedula()) );
                 rolRegAlquiler.setTitulo("");
                 rolRegAlquiler.setNombre("");
                 break;

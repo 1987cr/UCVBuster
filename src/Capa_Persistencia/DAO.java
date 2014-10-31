@@ -11,6 +11,7 @@ import DTO.ClienteBean;
 import DTO.VideoBean;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -33,7 +34,7 @@ public interface DAO {
                String resumen, int locales_id_local);
        
      public abstract void add_alquiler
-       ( Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, 
+       ( String fecha_alquiler, String fecha_planeada_entrega, int video_id_video, 
               int clientes_id_cliente);
        
     public abstract void devolver_video (int video, int cliente);

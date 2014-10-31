@@ -17,6 +17,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -109,14 +110,14 @@ public class Oracle implements DAO {
                  con.close();
           }catch( SQLException e ) { System.out.println("Error en add_video"); System.out.println(e);}
     }
-
+ 
     @Override
-    public void add_alquiler( Date fecha_alquiler, Date fecha_planeada_entrega, int video_id_video, int clientes_id_cliente) {
+    public void add_alquiler( String fecha_alquiler, String fecha_planeada_entrega, int video_id_video, int clientes_id_cliente) {
        try ( Connection con = conectar();) {
            
                  Statement stmt = con.createStatement();
                  String query = "INSERT INTO alquileres ( id_alquiler,       fecha_alquiler,        fecha_planeada_entrega,      video_id_video,    clientes_id_cliente) VALUES("
-                                                        +" alquileres_seq.NEXTVAL ,"+  fecha_alquiler +","+ fecha_planeada_entrega +","+ video_id_video +","+ clientes_id_cliente +")";
+                                                        +" alquileres_seq.NEXTVAL ,'"+  fecha_alquiler +"','"+ fecha_planeada_entrega +"',"+ video_id_video +","+ clientes_id_cliente +")";
                  
                /*  String query = "exec add_alquiler("+ id_alquiler +",'29-oct-2014','31-oct-2014',"+ video_id_video +","+ 
                                                         clientes_id_cliente +")";*/
