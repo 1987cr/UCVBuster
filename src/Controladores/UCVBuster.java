@@ -97,6 +97,7 @@ public class UCVBuster {
                 laTimer = new ListaAtrasadosTimer();
                 // Timer Correo Cartelera
                 cTimer = new CarteleraTimer();
+                // init BD
                 db = new Oracle();
                 
                 acceso = new IAcceso();
@@ -195,17 +196,20 @@ public class UCVBuster {
                 break;
                 
             case 16: // Buscar Cédula: Consultar Alquileres
-                ArrayList alquilerList = db.get_alquiler(Integer.parseInt(rolConsAlq.getCedula()));
                 
-                Iterator j = alquilerList.iterator();
+                if(!rolConsAlq.getCedula().equals("")){
+                    ArrayList alquilerList = db.get_alquiler(Integer.parseInt(rolConsAlq.getCedula()));
                 
-                AlquilerBean ab;
-                
-                while(j.hasNext()){
-                    ab = (AlquilerBean) j.next();
-                    
-                    rolConsAlq.setRow(Integer.toString(ab.getVideo_id_video()));
-                }
+                    Iterator j = alquilerList.iterator();
+
+                    AlquilerBean ab;
+
+                    while(j.hasNext()){
+                        ab = (AlquilerBean) j.next();
+
+                        rolConsAlq.setRow(Integer.toString(ab.getVideo_id_video()));
+                    }
+                }                
                         
                 break;
                 
@@ -380,20 +384,22 @@ public class UCVBuster {
                 break;
             
             case 34: // Buscar: Modificar Cliente
-                ClienteBean c = db.get_cliente(Integer.parseInt(rolModCliente.getCedula()));
+                if(!rolModCliente.getCedula().equals("")){
+                    ClienteBean c = db.get_cliente(Integer.parseInt(rolModCliente.getCedula()));
                 
-                if(c.getId_cliente() == 0){
-                    JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
-                }else{
-                    rolModCliente.disableCedula();
-                    rolModCliente.setNombre(c.getNombre());
-                    rolModCliente.setCorreo(c.getEmail());
-                    rolModCliente.setDireccion(c.getDireccion());
-                    rolModCliente.setTelefono(c.getTelefono());
-                    rolModCliente.setSalario(Integer.toString(c.getSalario_mensual()));
-                    rolModCliente.setPotencial(c.getPotencial());
-                    rolModCliente.setSuscribir(c.getSuscripto());
-                }              
+                    if(c.getId_cliente() == 0){
+                        JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                    }else{
+                        rolModCliente.disableCedula();
+                        rolModCliente.setNombre(c.getNombre());
+                        rolModCliente.setCorreo(c.getEmail());
+                        rolModCliente.setDireccion(c.getDireccion());
+                        rolModCliente.setTelefono(c.getTelefono());
+                        rolModCliente.setSalario(Integer.toString(c.getSalario_mensual()));
+                        rolModCliente.setPotencial(c.getPotencial());
+                        rolModCliente.setSuscribir(c.getSuscripto());
+                    }         
+                }                     
                 
                 break;
                 
@@ -487,20 +493,23 @@ public class UCVBuster {
                 break;
             
             case 41: // Buscar: Eliminar Cliente
-                ClienteBean cl = db.get_cliente(Integer.parseInt(rolDelCliente.getCedula()));
+                if(!rolDelCliente.getCedula().equals("")){
+                    ClienteBean cl = db.get_cliente(Integer.parseInt(rolDelCliente.getCedula()));
                 
-                if(cl.getId_cliente() == 0){
-                    JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
-                }else{
-                    rolDelCliente.enableEliminar();
-                    rolDelCliente.setNombre(cl.getNombre());
-                    rolDelCliente.setCorreo(cl.getEmail());
-                    rolDelCliente.setDireccion(cl.getDireccion());
-                    rolDelCliente.setTelefono(cl.getTelefono());
-                    rolDelCliente.setSalario(Integer.toString(cl.getSalario_mensual()));
-                    rolDelCliente.setPotencial(cl.getPotencial());
-                    rolDelCliente.setSuscribir(cl.getSuscripto());
+                    if(cl.getId_cliente() == 0){
+                        JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                    }else{
+                        rolDelCliente.enableEliminar();
+                        rolDelCliente.setNombre(cl.getNombre());
+                        rolDelCliente.setCorreo(cl.getEmail());
+                        rolDelCliente.setDireccion(cl.getDireccion());
+                        rolDelCliente.setTelefono(cl.getTelefono());
+                        rolDelCliente.setSalario(Integer.toString(cl.getSalario_mensual()));
+                        rolDelCliente.setPotencial(cl.getPotencial());
+                        rolDelCliente.setSuscribir(cl.getSuscripto());
+                    }
                 }
+                
                 break;
                 
             case 42: // Descripción Película: Aceptar
@@ -541,19 +550,21 @@ public class UCVBuster {
                 rolAtrasados.dispose();
                 break;
                 
-            case 46:
-                VideoBean auxVideo = db.get_video(Integer.parseInt(rolDelVideo.getId()));
-                
-                if(auxVideo.getId_video() == 0){
-                    JOptionPane.showMessageDialog(null, "Video no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
-                }else{
-                    rolDelVideo.enableEliminar();
-                    rolDelVideo.setNombre(auxVideo.getNombre());
-                    rolDelVideo.setClasificacion(auxVideo.getClasificacion());
-                    rolDelVideo.setGenero(auxVideo.getGenero());
-                    rolDelVideo.setResumen(auxVideo.getResumen());
-                }
-                
+            case 46: // Eliminar video: Buscar
+                if(!rolDelVideo.getId().equals("")){
+                    VideoBean auxVideo = db.get_video(Integer.parseInt(rolDelVideo.getId()));
+
+                    if(auxVideo.getId_video() == 0){
+                        JOptionPane.showMessageDialog(null, "Video no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                    }else{
+                        rolDelVideo.enableEliminar();
+                        rolDelVideo.setNombre(auxVideo.getNombre());
+                        rolDelVideo.setClasificacion(auxVideo.getClasificacion());
+                        rolDelVideo.setGenero(auxVideo.getGenero());
+                        rolDelVideo.setResumen(auxVideo.getResumen());
+                    }
+                }             
+               
                 break;
         }        
          
