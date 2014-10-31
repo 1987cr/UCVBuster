@@ -66,6 +66,11 @@ public class IRegDevolucion extends javax.swing.JFrame {
         jLabel2.setText("Nombre:");
 
         nombreField.setEnabled(false);
+        nombreField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                nombreFieldCaretUpdate(evt);
+            }
+        });
         nombreField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreFieldActionPerformed(evt);
@@ -119,6 +124,11 @@ public class IRegDevolucion extends javax.swing.JFrame {
         jLabel6.setText("Título:");
 
         tituloField.setEnabled(false);
+        tituloField.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                tituloFieldCaretUpdate(evt);
+            }
+        });
 
         buscarIdBtn.setText("Buscar");
         buscarIdBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +256,16 @@ public class IRegDevolucion extends javax.swing.JFrame {
             Logger.getLogger(IRegDevolucion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aceptarBtnActionPerformed
+
+    private void nombreFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_nombreFieldCaretUpdate
+        if(!cedulaField.getText().equals("") && !idField.getText().equals("") )
+            aceptarBtn.setEnabled(true);
+    }//GEN-LAST:event_nombreFieldCaretUpdate
+
+    private void tituloFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_tituloFieldCaretUpdate
+        if(!cedulaField.getText().equals("") && !idField.getText().equals("") )
+            aceptarBtn.setEnabled(true);
+    }//GEN-LAST:event_tituloFieldCaretUpdate
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
