@@ -1,6 +1,7 @@
 package Controladores;
 
 import Capa_Persistencia.Oracle;
+import DTO.AlquilerBean;
 import DTO.ClienteBean;
 import DTO.VideoBean;
 import Decorator.BordeNegro;
@@ -194,7 +195,18 @@ public class UCVBuster {
                 break;
                 
             case 16: // Buscar Cédula: Consultar Alquileres
+                ArrayList alquilerList = db.get_alquiler(Integer.parseInt(rolConsAlq.getCedula()));
                 
+                Iterator j = alquilerList.iterator();
+                
+                AlquilerBean ab;
+                
+                while(j.hasNext()){
+                    ab = (AlquilerBean) j.next();
+                    
+                    rolConsAlq.setRow(Integer.toString(ab.getVideo_id_video()));
+                }
+                        
                 break;
                 
             case 17: // Registrar Cliente
