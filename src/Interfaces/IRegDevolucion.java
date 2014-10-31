@@ -15,6 +15,10 @@ public class IRegDevolucion extends javax.swing.JFrame {
         initComponents();
     }
     
+    public void enableAceptar(){
+        aceptarBtn.setEnabled(true);
+    }
+    
     public void setNombre(String nombre){
         nombreField.setText(nombre);
     }

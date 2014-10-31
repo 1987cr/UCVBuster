@@ -74,6 +74,10 @@ public class UCVBuster {
     private BordeNegro bNeg;
     private ProcesarVideo procVid;
     
+    private VideoBean videoAux;
+    private ClienteBean clienteAux;
+    private AlquilerBean alquilerAux;
+    
     private ArrayList listaPeliculas;
     
     private Oracle db;
@@ -158,14 +162,14 @@ public class UCVBuster {
                 
             case 7: // Buscar Cédula: Registrar Alquileres
                 
-                ClienteBean cli = db.get_cliente(Integer.parseInt(rolRegAlquiler.getCedula()));
-                rolRegAlquiler.setNombre(cli.getNombre());
+                clienteAux = db.get_cliente(Integer.parseInt(rolRegAlquiler.getCedula()));
+                rolRegAlquiler.setNombre(clienteAux.getNombre());
                 break;
                 
             case 8: // Buscar ID: Registrar Alquileres
                 
-                VideoBean vid = db.get_video(Integer.parseInt(rolRegAlquiler.getId()));
-                rolRegAlquiler.setTitulo(vid.getNombre());
+                videoAux = db.get_video(Integer.parseInt(rolRegAlquiler.getId()));
+                rolRegAlquiler.setTitulo(videoAux.getNombre());
                 break;
                 
             case 9: // Registrar Devolución
@@ -183,15 +187,38 @@ public class UCVBuster {
                 break;
                 
             case 11: // Aceptar: Registrar Devolución
+                db.devolver_video(Integer.parseInt(rolRegDevolucion.getId()),
+                                  Integer.parseInt(rolRegDevolucion.getCedula()));
                 
+                rolRegDevolucion.dispose();
+                rolEmpleado.setEnabled(true);
+                rolEmpleado.setVisible(true);
                 break;
                 
             case 12: // Buscar Cédula: Registrar Devolución
+                 if(!rolRegDevolucion.getCedula().equals("")){
+                    clienteAux = db.get_cliente(Integer.parseInt(rolRegDevolucion.getCedula()));
                 
+                    if(clienteAux.getId_cliente() == 0){
+                        JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                    }else{
+                        rolRegDevolucion.enableAceptar();
+                        rolRegDevolucion.setNombre(clienteAux.getNombre());
+                    }         
+                }       
                 break;
                 
             case 13: // Buscar ID: Registrar Devolución
-                
+                if(!rolRegDevolucion.getId().equals("")){
+                    videoAux = db.get_video(Integer.parseInt(rolRegDevolucion.getId()));
+
+                    if(videoAux.getId_video() == 0){
+                        JOptionPane.showMessageDialog(null, "Video no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
+                    }else{
+                        rolRegDevolucion.enableAceptar();
+                        rolRegDevolucion.setTitulo(videoAux.getNombre());
+                    }
+                }            
                 break;
                 
             case 14: // Consultar Alquileres
@@ -215,12 +242,12 @@ public class UCVBuster {
                 
                     Iterator j = alquilerList.iterator();
 
-                    AlquilerBean ab;
+                    alquilerAux = null;
 
                     while(j.hasNext()){
-                        ab = (AlquilerBean) j.next();
+                        alquilerAux = (AlquilerBean) j.next();
 
-                        rolConsAlq.setRow(Integer.toString(ab.getVideo_id_video()));
+                        rolConsAlq.setRow(Integer.toString(alquilerAux.getVideo_id_video()));
                     }
                 }                
                         
@@ -398,19 +425,19 @@ public class UCVBuster {
             
             case 34: // Buscar: Modificar Cliente
                 if(!rolModCliente.getCedula().equals("")){
-                    ClienteBean c = db.get_cliente(Integer.parseInt(rolModCliente.getCedula()));
+                    clienteAux = db.get_cliente(Integer.parseInt(rolModCliente.getCedula()));
                 
-                    if(c.getId_cliente() == 0){
+                    if(clienteAux.getId_cliente() == 0){
                         JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
                     }else{
                         rolModCliente.disableCedula();
-                        rolModCliente.setNombre(c.getNombre());
-                        rolModCliente.setCorreo(c.getEmail());
-                        rolModCliente.setDireccion(c.getDireccion());
-                        rolModCliente.setTelefono(c.getTelefono());
-                        rolModCliente.setSalario(Integer.toString(c.getSalario_mensual()));
-                        rolModCliente.setPotencial(c.getPotencial());
-                        rolModCliente.setSuscribir(c.getSuscripto());
+                        rolModCliente.setNombre(clienteAux.getNombre());
+                        rolModCliente.setCorreo(clienteAux.getEmail());
+                        rolModCliente.setDireccion(clienteAux.getDireccion());
+                        rolModCliente.setTelefono(clienteAux.getTelefono());
+                        rolModCliente.setSalario(Integer.toString(clienteAux.getSalario_mensual()));
+                        rolModCliente.setPotencial(clienteAux.getPotencial());
+                        rolModCliente.setSuscribir(clienteAux.getSuscripto());
                     }         
                 }                     
                 
@@ -425,14 +452,14 @@ public class UCVBuster {
                                                                
                 listaPeliculas = db.get_catalago();
                 Vector catalogo = new Vector<>();
-                VideoBean pelicula = null;
+                videoAux = null;
                 
                 Iterator i = listaPeliculas.listIterator();
                 
                 
                 while(i.hasNext()){
-                    pelicula = (VideoBean) i.next();
-                    catalogo.add(pelicula.getNombre()); 
+                    videoAux = (VideoBean) i.next();
+                    catalogo.add(videoAux.getNombre()); 
                 }
                
                 rolConsultarCatalogo.addPelicula(catalogo);
@@ -446,20 +473,20 @@ public class UCVBuster {
                 rolDescVideo.setResizable(false);
                 rolConsultarCatalogo.setEnabled(false);
                 
-                pelicula = null;
+                videoAux = null;
                 
                 i = listaPeliculas.listIterator();
                 
                 while(i.hasNext()){
-                    pelicula = (VideoBean) i.next();
-                    if(pelicula.getNombre().equals(rolConsultarCatalogo.getPelicula()))
+                    videoAux = (VideoBean) i.next();
+                    if(videoAux.getNombre().equals(rolConsultarCatalogo.getPelicula()))
                         break; 
                 }
                 
-                rolDescVideo.setTitulo(pelicula.getNombre());
-                rolDescVideo.setClas(pelicula.getClasificacion());
-                rolDescVideo.setGenero(pelicula.getGenero());
-                rolDescVideo.setResumen(pelicula.getResumen());
+                rolDescVideo.setTitulo(videoAux.getNombre());
+                rolDescVideo.setClas(videoAux.getClasificacion());
+                rolDescVideo.setGenero(videoAux.getGenero());
+                rolDescVideo.setResumen(videoAux.getResumen());
                 
                 break;
             
@@ -470,17 +497,17 @@ public class UCVBuster {
                 rolDisponible.setResizable(false);
                 rolConsultarCatalogo.setEnabled(false);
                 
-                pelicula = null;
+                videoAux = null;
                 
                 i = listaPeliculas.listIterator();
                 
                 while(i.hasNext()){
-                    pelicula = (VideoBean) i.next();
-                    if(pelicula.getNombre().equals(rolConsultarCatalogo.getPelicula()))
+                    videoAux = (VideoBean) i.next();
+                    if(videoAux.getNombre().equals(rolConsultarCatalogo.getPelicula()))
                         break; 
                 }
                 
-                rolDisponible.setDisponibilidad(Integer.toString(pelicula.getCantidad_existencias()));
+                rolDisponible.setDisponibilidad(Integer.toString(videoAux.getCantidad_existencias()));
                 break;
                 
             case 38: // Eliminar Cliente
@@ -507,19 +534,19 @@ public class UCVBuster {
             
             case 41: // Buscar: Eliminar Cliente
                 if(!rolDelCliente.getCedula().equals("")){
-                    ClienteBean cl = db.get_cliente(Integer.parseInt(rolDelCliente.getCedula()));
+                    clienteAux = db.get_cliente(Integer.parseInt(rolDelCliente.getCedula()));
                 
-                    if(cl.getId_cliente() == 0){
+                    if(clienteAux.getId_cliente() == 0){
                         JOptionPane.showMessageDialog(null, "Cliente no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
                     }else{
                         rolDelCliente.enableEliminar();
-                        rolDelCliente.setNombre(cl.getNombre());
-                        rolDelCliente.setCorreo(cl.getEmail());
-                        rolDelCliente.setDireccion(cl.getDireccion());
-                        rolDelCliente.setTelefono(cl.getTelefono());
-                        rolDelCliente.setSalario(Integer.toString(cl.getSalario_mensual()));
-                        rolDelCliente.setPotencial(cl.getPotencial());
-                        rolDelCliente.setSuscribir(cl.getSuscripto());
+                        rolDelCliente.setNombre(clienteAux.getNombre());
+                        rolDelCliente.setCorreo(clienteAux.getEmail());
+                        rolDelCliente.setDireccion(clienteAux.getDireccion());
+                        rolDelCliente.setTelefono(clienteAux.getTelefono());
+                        rolDelCliente.setSalario(Integer.toString(clienteAux.getSalario_mensual()));
+                        rolDelCliente.setPotencial(clienteAux.getPotencial());
+                        rolDelCliente.setSuscribir(clienteAux.getSuscripto());
                     }
                 }
                 
@@ -547,14 +574,14 @@ public class UCVBuster {
                 
                 Iterator it = atrasados.iterator();
                 
-                ClienteBean aux;
+                clienteAux = null;
                 
                 while(it.hasNext()){
-                    aux = (ClienteBean) it.next();
-                    rolAtrasados.setRow(Integer.toString(aux.getId_cliente()), 
-                                        aux.getEmail(), 
-                                        aux.getEmail(),
-                                        aux.getTelefono());
+                    clienteAux = (ClienteBean) it.next();
+                    rolAtrasados.setRow(Integer.toString(clienteAux.getId_cliente()), 
+                                        clienteAux.getEmail(), 
+                                        clienteAux.getEmail(),
+                                        clienteAux.getTelefono());
                 }
                 
                 break;
@@ -565,16 +592,16 @@ public class UCVBuster {
                 
             case 46: // Eliminar video: Buscar
                 if(!rolDelVideo.getId().equals("")){
-                    VideoBean auxVideo = db.get_video(Integer.parseInt(rolDelVideo.getId()));
+                    videoAux = db.get_video(Integer.parseInt(rolDelVideo.getId()));
 
-                    if(auxVideo.getId_video() == 0){
+                    if(videoAux.getId_video() == 0){
                         JOptionPane.showMessageDialog(null, "Video no existe.","Información", JOptionPane.INFORMATION_MESSAGE); 
                     }else{
                         rolDelVideo.enableEliminar();
-                        rolDelVideo.setNombre(auxVideo.getNombre());
-                        rolDelVideo.setClasificacion(auxVideo.getClasificacion());
-                        rolDelVideo.setGenero(auxVideo.getGenero());
-                        rolDelVideo.setResumen(auxVideo.getResumen());
+                        rolDelVideo.setNombre(videoAux.getNombre());
+                        rolDelVideo.setClasificacion(videoAux.getClasificacion());
+                        rolDelVideo.setGenero(videoAux.getGenero());
+                        rolDelVideo.setResumen(videoAux.getResumen());
                     }
                 }             
                
